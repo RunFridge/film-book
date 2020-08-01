@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const naverApi = axios.create({
+// Naver Developer API
+const naverAxios = axios.create({
   baseURL: "/api/v1/",
   timeout: 5000,
   headers: {
@@ -9,10 +10,15 @@ const naverApi = axios.create({
   },
 });
 
-export const getMovieSearch = (query) =>
-  naverApi.get("search/movie.json", { params: { query } });
+export const naverMovieApi = {
+  search: (term) =>
+    naverAxios.get("search/movie.json", {
+      params: { query: term },
+    }),
+};
 
-const tmdbApi = axios.create({
+// The Movie DB API
+const tmdbAxios = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
   params: {
     api_key: process.env.REACT_APP_THEMOVIEDB_APIKEY,
@@ -21,17 +27,17 @@ const tmdbApi = axios.create({
 });
 
 export const tmdbMoviesApi = {
-  nowPlaying: () => tmdbApi.get("movie/now_playing"),
-  upcoming: () => tmdbApi.get("movie/upcoming"),
-  popular: () => tmdbApi.get("movie/popular"),
+  nowPlaying: () => tmdbAxios.get("movie/now_playing"),
+  upcoming: () => tmdbAxios.get("movie/upcoming"),
+  popular: () => tmdbAxios.get("movie/popular"),
   movieDetail: (id) =>
-    tmdbApi.get(`movie/${id}`, {
+    tmdbAxios.get(`movie/${id}`, {
       params: {
         append_to_response: "videos",
       },
     }),
   search: (term) =>
-    tmdbApi.get("search/movie", {
+    tmdbAxios.get("search/movie", {
       params: {
         // themoviedb API aitomatically URIencodes search term
         query: term,
@@ -40,20 +46,43 @@ export const tmdbMoviesApi = {
 };
 
 export const tmdbTVApi = {
-  topRated: () => tmdbApi.get("tv/top_rated"),
-  popular: () => tmdbApi.get("tv/popular"),
-  airingToday: () => tmdbApi.get("tv/airing_today"),
+  topRated: () => tmdbAxios.get("tv/top_rated"),
+  popular: () => tmdbAxios.get("tv/popular"),
+  airingToday: () => tmdbAxios.get("tv/airing_today"),
   showDetail: (id) =>
-    tmdbApi.get(`tv/${id}`, {
+    tmdbAxios.get(`tv/${id}`, {
       params: {
         append_to_response: "videos",
       },
     }),
   search: (term) =>
-    tmdbApi.get("search/tv", {
+    tmdbAxios.get("search/tv", {
       params: {
         // themoviedb API aitomatically URIencodes search term
         query: term,
+      },
+    }),
+};
+
+// KOBIS API
+const kobisAxios = axios.create({
+  baseURL: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/",
+  params: {
+    key: process.env.REACT_APP_KOBIS_APIKEY,
+  },
+});
+
+export const kobisApi = {
+  getPerson: (name) =>
+    kobisAxios.get("people/searchPeopleList.json", {
+      params: {
+        peopleNm: name,
+      },
+    }),
+  getPersonDetail: (id) =>
+    kobisAxios.get("people/searchPeopleInfo.json", {
+      params: {
+        peopleCd: id,
       },
     }),
 };
