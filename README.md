@@ -13,3 +13,8 @@
   - [x] [The Movie DB API](https://developers.themoviedb.org/)
     - Issue with Axios@0.19.x, not passing params in the request -> downgraded to Axios@0.18.1
   - [x] [KOBIS API](https://www.kobis.or.kr/kobisopenapi/homepg/apiservice/searchServiceInfo.do)
+- [ ] Pages
+  - [ ] Home
+  - [ ] Movies
+  - [ ] Shows
+  - [ ] Search
