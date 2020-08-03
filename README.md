@@ -11,10 +11,15 @@
   - [x] [Naver API](https://developers.naver.com/docs/search/movie/)
     - 네이버 Developer API 같은 경우 Client-side에서 CORS 제한이 걸려있기 때문에 프록시 서버로 실행 [[참고]](https://msyu1207.tistory.com/65)
   - [x] [The Movie DB API](https://developers.themoviedb.org/)
-    - Issue with Axios@0.19.x, not passing params in the request -> downgraded to Axios@0.18.1
+    - Issue with Axios@0.19.2, not passing params in the request -> downgraded to Axios@0.18.1
   - [x] [KOBIS API](https://www.kobis.or.kr/kobisopenapi/homepg/apiservice/searchServiceInfo.do)
-- [ ] Pages
-  - [ ] Home
+- [ ] Router
   - [ ] Movies
   - [ ] Shows
-  - [ ] Search
+  - [ ] Search Results
+  - [ ] Settings
+- [ ] Pages
+  - [ ] Movies
+  - [ ] Shows
+  - [ ] Search Results
+  - [ ] Settings
