@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Naver Developer API
 const naverAxios = axios.create({
-  baseURL: "/api/v1/",
+  baseURL: "/api/v1/", // View setupProxy.js for full URL
   timeout: 5000,
   headers: {
     "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
