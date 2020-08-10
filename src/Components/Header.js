@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
-import vars from "../Style/vars";
+import globalSize from "../Style/globalSize";
+import { device } from "../Style/devices";
 import FontAwesomeIcon from "./FontAwesomeIcon";
 
 const Header = styled.header`
@@ -16,7 +17,7 @@ const Header = styled.header`
   background-color: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   z-index: 10;
-  padding: ${vars.bodySidePadding};
+  padding: ${globalSize.bodySidePadding};
 `;
 
 const HeaderDiv = styled.div`
@@ -39,8 +40,12 @@ const Item = styled.li`
   align-items: center;
   font-size: 1.1rem;
   font-weight: ${(props) => (props.current ? "bold" : "normal")};
+  min-width: fit-content;
   &:not(:last-child) {
     margin-right: 30px;
+  }
+  @media ${device.phone} {
+    font-size: 0.9rem;
   }
 `;
 
@@ -60,8 +65,11 @@ const SearchBar = styled.div`
   display: flex;
   align-items: center;
   padding: 10px;
-  width: 20rem;
+  width: 20vw;
   background-color: #f5f5f7;
+  @media ${device.phone} {
+    width: 35vw;
+  }
 `;
 
 const Input = styled.input`
@@ -71,6 +79,20 @@ const Input = styled.input`
   &::placeholder {
     color: rgba(0, 0, 0, 0.2);
     font-size: 0.9rem;
+    @media ${device.phone} {
+      color: transparent;
+    }
+  }
+`;
+
+const Logo = styled.div`
+  background-image: url("https://via.placeholder.com/150x35");
+  width: 150px;
+  height: 35px;
+  @media ${device.phone} {
+    background-image: url("https://via.placeholder.com/35");
+    width: 35px;
+    height: 35px;
   }
 `;
 
@@ -91,17 +113,14 @@ export default withRouter(({ location: { pathname }, history: { push } }) => {
         <List>
           <Item>
             <StyledLink to="/">
-              <img
-                src="https://via.placeholder.com/150x35"
-                alt="Logo Placeholder"
-              />
+              <Logo alt="Logo Placeholder" />
             </StyledLink>
           </Item>
           <Item current={pathname === "/"}>
             <StyledLink to="/">영화</StyledLink>
           </Item>
           <Item current={pathname === "/shows"}>
-            <StyledLink to="/shows">TV 프로그램</StyledLink>
+            <StyledLink to="/shows">TV</StyledLink>
           </Item>
         </List>
       </HeaderDiv>

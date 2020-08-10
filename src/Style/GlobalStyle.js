@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import { GmarketSansLight } from "./fonts";
-import vars from "./vars";
+import globalSize from "./globalSize";
 
 const GlobalStyles = createGlobalStyle`
     ${reset};
@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
     }
     body{
         font-family: 'GmarketSansLight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        padding: ${vars.bodySidePadding};
+        padding: ${globalSize.bodySidePadding};
         padding-top: 80px;
     }
     h1 {
