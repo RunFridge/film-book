@@ -3,6 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import globalSize from "../Style/globalSize";
 import { device } from "../Style/devices";
+import colors from "../Style/colors";
 import FontAwesomeIcon from "./FontAwesomeIcon";
 
 const Header = styled.header`
@@ -15,7 +16,7 @@ const Header = styled.header`
   align-items: center;
   justify-content: space-between;
   background-color: white;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid ${colors.lightBg};
   z-index: 10;
   padding: ${globalSize.bodySidePadding};
 `;
