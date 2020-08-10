@@ -1,7 +1,6 @@
 /* Loader from https://loading.io/css/ */
 import React from "react";
 import styled from "styled-components";
-import colors from "../Style/colors";
 import vars from "../Style/vars";
 
 const Loader = styled.div`
@@ -26,7 +25,8 @@ const Loader = styled.div`
     border: 8px solid #fff;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: ${colors.primary} transparent transparent transparent;
+    border-color: ${(props) => props.theme.colors.primary} transparent
+      transparent transparent;
   }
   .lds-ring div:nth-child(1) {
     animation-delay: -0.45s;

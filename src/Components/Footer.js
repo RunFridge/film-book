@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import vars from "../Style/vars";
-import colors from "../Style/colors";
-import FontAwesomeIcon from "./FontAwesomeIcon";
 import ToTopButton from "./ToTopButton";
 
 const FooterContainer = styled.footer`
@@ -10,12 +8,17 @@ const FooterContainer = styled.footer`
   height: 250px;
   ${vars.flexCenter};
   flex-direction: column;
-  background-color: ${colors.darkBg};
-  color: ${colors.primary};
+  background-color: ${(props) => props.theme.colors.footerBg};
+  color: ${(props) => props.theme.colors.primary};
 `;
 
 const Title = styled.h1`
   font-weight: bold;
+`;
+
+const StyledIcon = styled.i`
+  color: ${(props) => props.theme.colors.enabledIcon};
+  font-size: 3rem;
 `;
 
 const LogoWrapper = styled.div`
@@ -23,6 +26,10 @@ const LogoWrapper = styled.div`
   width: 10vw;
   display: flex;
   justify-content: space-around;
+`;
+
+const CopyRight = styled.span`
+  color: ${(props) => props.theme.colors.secondary};
 `;
 
 const Footer = () => {
@@ -35,10 +42,10 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FontAwesomeIcon class="fab fa-github" color="white" size="3rem" />
+          <StyledIcon className="fab fa-github" />
         </a>
       </LogoWrapper>
-      <span>&copy; FilmBook 2020</span>
+      <CopyRight>&copy; FilmBook 2020</CopyRight>
       <ToTopButton />
     </FooterContainer>
   );

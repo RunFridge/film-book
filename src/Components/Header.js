@@ -3,8 +3,6 @@ import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import vars from "../Style/vars";
 import { device } from "../Style/devices";
-import colors from "../Style/colors";
-import FontAwesomeIcon from "./FontAwesomeIcon";
 
 const Header = styled.header`
   position: fixed;
@@ -15,8 +13,8 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ${colors.slightTransparentWhite};
-  border-bottom: 1px solid ${colors.lightBg};
+  background-color: ${(props) => props.theme.colors.headerBg};
+  border-bottom: 1px solid ${(props) => props.theme.colors.inputBackdrop};
   z-index: 10;
   padding: ${vars.bodySidePadding};
 `;
@@ -67,7 +65,8 @@ const SearchBar = styled.div`
   align-items: center;
   padding: 10px;
   width: 20vw;
-  background-color: #f5f5f7;
+  background-color: ${(props) => props.theme.colors.inputBackdrop};
+  border-radius: 5px;
   @media ${device.phone} {
     width: 35vw;
   }
@@ -78,7 +77,7 @@ const Input = styled.input`
   margin-left: 15px;
   width: 100%;
   &::placeholder {
-    color: rgba(0, 0, 0, 0.2);
+    color: ${(props) => props.theme.colors.placeholder};
     font-size: 0.9rem;
     @media ${device.phone} {
       color: transparent;
@@ -95,6 +94,11 @@ const Logo = styled.div`
     width: 35px;
     height: 35px;
   }
+`;
+
+const StyledIcon = styled.i`
+  color: ${(props) => props.theme.colors.placeholder};
+  font-size: 1rem;
 `;
 
 export default withRouter(({ location: { pathname }, history: { push } }) => {
@@ -129,7 +133,7 @@ export default withRouter(({ location: { pathname }, history: { push } }) => {
         <Item>
           <Form onSubmit={onSubmit}>
             <SearchBar>
-              <FontAwesomeIcon class="fas fa-search" color="rgba(0,0,0,0.2)" />
+              <StyledIcon className="fas fa-search" />
               <Input
                 onChange={onChange}
                 placeholder="작품, 제목, 배우, 감독을 검색해보세요."

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import vars from "../Style/vars";
-import FontAwesomeIcon from "./FontAwesomeIcon";
 
 const Container = styled.div`
   padding-top: 50px;
@@ -16,11 +15,15 @@ const Container = styled.div`
   }
 `;
 
+const StyledIcon = styled.i`
+  font-size: 5rem;
+`;
+
 const Error = (props) => {
   console.log(props.msg);
   return (
     <Container>
-      <FontAwesomeIcon class="fas fa-exclamation-circle" size="5rem" />
+      <StyledIcon className="fas fa-exclamation-circle" />
       <h1>Oops!</h1>
       <p>Something went wrong...</p>
     </Container>

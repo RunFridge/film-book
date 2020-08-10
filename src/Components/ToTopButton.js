@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import colors from "../Style/colors";
 import vars from "../Style/vars";
-import FontAwesomeIcon from "./FontAwesomeIcon";
 
 const ButtonContainer = styled.div`
   ${vars.flexCenter};
@@ -13,8 +11,17 @@ const ButtonContainer = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 15px;
-  background: ${colors.slightTransparentWhite};
+  background: ${(props) => props.theme.colors.enabledIcon};
   box-shadow: ${vars.coolBoxShadow};
+  z-index: 15;
+`;
+
+const StyledIcon = styled.i`
+  color: ${(props) => props.theme.colors.disabledIcon};
+  font-size: 2rem;
+  &:hover {
+    color: ${(props) => props.theme.colors.enabledBtn};
+  }
 `;
 
 const ToTopButton = () => {
@@ -23,12 +30,7 @@ const ToTopButton = () => {
   };
   return (
     <ButtonContainer onClick={scrollTop}>
-      <FontAwesomeIcon
-        class="fas fa-chevron-up"
-        color={colors.darkBg}
-        hoverColor={colors.primary}
-        size="2rem"
-      />
+      <StyledIcon className="fas fa-chevron-up" />
     </ButtonContainer>
   );
 };

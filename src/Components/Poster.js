@@ -48,8 +48,8 @@ const Title = styled.span`
 `;
 
 const Date = styled.span`
-  font-size: 0.8rem;
-  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.6rem;
+  color: ${(props) => props.theme.colors.subText};
 `;
 
 const Poster = ({

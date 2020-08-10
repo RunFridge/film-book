@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import colors from "../Style/colors";
 import { device } from "../Style/devices";
 
 const ArrowLeft = () => (
@@ -21,12 +20,15 @@ const SVGWrapper = `
   position: absolute;
   z-index: 5;
   top: 35%;
-  filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, .2));
 `;
 
 const LeftWrapper = styled.div`
   ${SVGWrapper};
-  fill: ${(props) => (props.disabled ? colors.grayBg : colors.lightBg)};
+  fill: ${(props) =>
+    props.disabled
+      ? props.theme.colors.disabledBtn
+      : props.theme.colors.enabledBtn};
   left: -60px;
   @media ${device.phone} {
     left: 10px;
@@ -36,7 +38,10 @@ const LeftWrapper = styled.div`
 
 const RightWrapper = styled.div`
   ${SVGWrapper};
-  fill: ${(props) => (props.disabled ? colors.grayBg : colors.lightBg)};
+  fill: ${(props) =>
+    props.disabled
+      ? props.theme.colors.disabledBtn
+      : props.theme.colors.enabledBtn};
   right: -60px;
   @media ${device.phone} {
     right: 10px;
