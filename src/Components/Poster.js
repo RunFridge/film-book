@@ -40,6 +40,8 @@ const Image = styled.img`
   box-shadow: ${vars.coolBoxShadow};
 `;
 
+const InfoContainer = styled.div``;
+
 const Title = styled.span`
   display: block;
   margin-bottom: 2px;
@@ -62,10 +64,10 @@ const Poster = ({
     <StyledLink to={isMovie ? `/movie/${id}` : `/show/${id}`}>
       <PosterWrapper>
         <Image src={posterImage} />
-        <div>
+        <InfoContainer>
           <Title>{title}</Title>
-          <Date>{releaseDate.split("-")[0]}</Date>
-        </div>
+          <Date>{releaseDate}</Date>
+        </InfoContainer>
       </PosterWrapper>
     </StyledLink>
   );

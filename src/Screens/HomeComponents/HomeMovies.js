@@ -19,6 +19,7 @@ const HomeMovies = ({ api }) => {
       tabletPerView={5}
       desktopPerView={6}
       spacing={15}
+      isMovie={true}
     />
   );
 };

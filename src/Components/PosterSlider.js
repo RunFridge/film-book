@@ -8,11 +8,7 @@ import { constructTMDBPosterUrl } from "../Utils/utils";
 import { useScreenSize } from "../Hooks/useScreenSize";
 import { size } from "../Style/devices";
 import { PrevNav, NextNav } from "./SliderNav";
-
-const parsePx = (pxSize) => {
-  // Parses px sized string to number
-  return parseInt(pxSize.replace("px", ""), 10);
-};
+import { parsePx } from "../Utils/utils";
 
 const SliderWrapper = styled.div`
   position: relative;
@@ -24,6 +20,7 @@ const PosterSlider = ({
   tabletPerView,
   desktopPerView,
   spacing,
+  isMovie,
 }) => {
   const [spv, setSpv] = useState(desktopPerView);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -68,7 +65,7 @@ const PosterSlider = ({
               posterImage={constructTMDBPosterUrl(content.poster_path, "500")}
               releaseDate={content.release_date}
               voteAverage={content.vote_average}
-              isMovie={true}
+              isMovie={isMovie}
             />
           </div>
         ))}

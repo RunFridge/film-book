@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import colors from "../Style/colors";
+import { device } from "../Style/devices";
 
 const ArrowLeft = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -15,8 +16,8 @@ const ArrowRight = () => (
 );
 
 const SVGWrapper = `
-  width: 50px;
-  height: 50px;
+  width: 3rem;
+  height: 3rem;
   position: absolute;
   z-index: 5;
   top: 35%;
@@ -26,14 +27,20 @@ const SVGWrapper = `
 const LeftWrapper = styled.div`
   ${SVGWrapper};
   fill: ${(props) => (props.disabled ? colors.grayBg : colors.lightBg)};
-  left: 10px;
+  left: -60px;
+  @media ${device.phone} {
+    left: 10px;
+  }
   cursor: ${(props) => (props.disabled ? "normal" : "pointer")};
 `;
 
 const RightWrapper = styled.div`
   ${SVGWrapper};
   fill: ${(props) => (props.disabled ? colors.grayBg : colors.lightBg)};
-  right: 10px;
+  right: -60px;
+  @media ${device.phone} {
+    right: 10px;
+  }
   cursor: ${(props) => (props.disabled ? "normal" : "pointer")};
 `;
 
