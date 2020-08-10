@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import vars from "../Style/vars";
 import colors from "../Style/colors";
-import FontAwesomeIcon from "../Components/FontAwesomeIcon";
+import FontAwesomeIcon from "./FontAwesomeIcon";
+import ToTopButton from "./ToTopButton";
 
 const FooterContainer = styled.footer`
   margin-top: 30px;
@@ -30,7 +31,7 @@ const Footer = () => {
       <Title>FilmBook</Title>
       <LogoWrapper>
         <a
-          href="https://github.com/hwhang0917"
+          href="https://github.com/RunFridge/film-book"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -38,6 +39,7 @@ const Footer = () => {
         </a>
       </LogoWrapper>
       <span>&copy; FilmBook 2020</span>
+      <ToTopButton />
     </FooterContainer>
   );
 };
