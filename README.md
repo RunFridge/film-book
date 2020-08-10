@@ -19,7 +19,7 @@
   - [x] Search Results
   - [x] Settings
 - [ ] Pages
-  - [ ] Movies
+  - [ ] Movies (Home)
   - [ ] Shows
   - [ ] Search Results
   - [ ] Settings
