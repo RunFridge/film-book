@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import globalSize from "../Style/globalSize";
+import vars from "../Style/vars";
 import { Link } from "react-router-dom";
 
 const NOOOO_URL =
@@ -12,7 +12,7 @@ const Container = styled.div`
     margin-bottom: 30px;
   }
   user-select: none;
-  ${globalSize.flexCenter};
+  ${vars.flexCenter};
   flex-direction: column;
   & > a {
     text-decoration: none;

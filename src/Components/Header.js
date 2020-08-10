@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
-import globalSize from "../Style/globalSize";
+import vars from "../Style/vars";
 import { device } from "../Style/devices";
 import colors from "../Style/colors";
 import FontAwesomeIcon from "./FontAwesomeIcon";
@@ -18,7 +18,7 @@ const Header = styled.header`
   background-color: white;
   border-bottom: 1px solid ${colors.lightBg};
   z-index: 10;
-  padding: ${globalSize.bodySidePadding};
+  padding: ${vars.bodySidePadding};
 `;
 
 const HeaderDiv = styled.div`

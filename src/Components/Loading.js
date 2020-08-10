@@ -2,16 +2,13 @@
 import React from "react";
 import styled from "styled-components";
 import colors from "../Style/colors";
-import globalSize from "../Style/globalSize";
+import vars from "../Style/vars";
 
 const Loader = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 30vw;
-  position: fixed;
-  top: 0;
-  left: 0;
   background: transparent;
-  ${globalSize.flexCenter};
+  ${vars.flexCenter};
 
   .lds-ring {
     display: inline-block;
