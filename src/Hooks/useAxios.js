@@ -33,7 +33,9 @@ const useAxios = (axiosInstance = defaultAxios) => {
           };
         });
       });
-  }, []);
+
+    return () => cancel();
+  }, [axiosInstance]);
 
   return state;
 };
