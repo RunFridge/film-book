@@ -7,7 +7,7 @@ import Poster from "./Poster";
 import { constructTMDBPosterUrl } from "../Utils/utils";
 import { useScreenSize } from "../Hooks/useScreenSize";
 import { size } from "../Style/devices";
-import SliderNav, { PrevNav, NextNav } from "./SliderNav";
+import { PrevNav, NextNav } from "./SliderNav";
 
 const parsePx = (pxSize) => {
   // Parses px sized string to number
