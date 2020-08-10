@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import vars from "../Style/vars";
+import FontAwesomeIcon from "./FontAwesomeIcon";
 
 const Header = styled.header`
   position: fixed;
@@ -45,13 +46,45 @@ const Item = styled.li`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  color: inherit;
   &:visited {
     color: inherit;
   }
 `;
 
-export default withRouter(({ location: { pathname } }) => {
-  const onSubmit = (e) => e.preventDefault();
+const Form = styled.form`
+  cursor: text;
+`;
+
+const SearchBar = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 20rem;
+  background-color: #f5f5f7;
+`;
+
+const Input = styled.input`
+  all: unset;
+  margin-left: 15px;
+  width: 100%;
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 0.9rem;
+  }
+`;
+
+export default withRouter(({ location: { pathname }, history: { push } }) => {
+  const [query, setQuery] = useState("");
+  const onSubmit = (e) => {
+    e.preventDefault();
+    push(`/search?query=${query}`);
+  };
+
+  const onChange = useCallback((e) => {
+    setQuery(e.target.value);
+  }, []);
+
   return (
     <Header>
       <HeaderDiv>
@@ -74,7 +107,15 @@ export default withRouter(({ location: { pathname } }) => {
       </HeaderDiv>
       <HeaderDiv>
         <Item>
-          <input type="text" />
+          <Form onSubmit={onSubmit}>
+            <SearchBar>
+              <FontAwesomeIcon class="fas fa-search" color="rgba(0,0,0,0.2)" />
+              <Input
+                onChange={onChange}
+                placeholder="작품, 제목, 배우, 감독을 검색해보세요."
+              />
+            </SearchBar>
+          </Form>
         </Item>
         <Item current={pathname === "/settings"}>
           <StyledLink to="/settings">설정</StyledLink>
