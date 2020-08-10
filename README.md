@@ -23,6 +23,10 @@
   - [ ] Shows
   - [ ] Search Results
   - [ ] Settings
+- [ ] Meta
+  - [x] Add ContextAPI for Dark/Light Mode
+  - [x] Theme file for both Dark/Light Mode
+  - [ ] Language Support
 
 ### Used libraries
 
@@ -33,3 +37,4 @@
 ### Reference Data
 
 - [How to use media queries with styled components](https://jsramblings.com/how-to-use-media-queries-with-styled-components/)
+- [Light Dark Mode toggle with styled components](https://dev.to/sorinc6/light-dark-mode-toggle-with-react-using-context-api-and-styled-components-347i)
