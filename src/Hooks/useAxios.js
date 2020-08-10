@@ -9,32 +9,41 @@ const useAxios = (axiosInstance = defaultAxios) => {
   });
 
   useEffect(() => {
-    //   Axios Cancel token
-    let cancel;
-    axiosInstance({
-      cancelToken: new axios.CancelToken((c) => (cancel = c)),
-    })
-      .then(({ data }) => {
-        setState((prevState) => {
-          return {
-            ...prevState,
-            loading: false,
-            data,
-          };
-        });
-      })
-      .catch((err) => {
-        if (axios.isCancel(err)) return;
-        setState((prevState) => {
-          return {
-            ...prevState,
-            loading: false,
-            error: err.message,
-          };
-        });
+    if (typeof axiosInstance !== "function") {
+      setState((prevState) => {
+        return {
+          ...prevState,
+          loading: false,
+          error: `[ERROR] Invalid axios type`,
+        };
       });
-
-    return () => cancel();
+    } else {
+      //   Axios Cancel token
+      let cancel;
+      axiosInstance({
+        cancelToken: new axios.CancelToken((c) => (cancel = c)),
+      })
+        .then(({ data }) => {
+          setState((prevState) => {
+            return {
+              ...prevState,
+              loading: false,
+              data,
+            };
+          });
+        })
+        .catch((err) => {
+          if (axios.isCancel(err)) return;
+          setState((prevState) => {
+            return {
+              ...prevState,
+              loading: false,
+              error: err.message,
+            };
+          });
+        });
+      return () => cancel();
+    }
   }, [axiosInstance]);
 
   return state;
