@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import vars from "../Style/vars";
-import { device } from "../Style/devices";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
