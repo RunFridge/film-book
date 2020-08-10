@@ -19,7 +19,17 @@
   - [x] Search Results
   - [x] Settings
 - [ ] Pages
-  - [ ] Movies (Home)
+  - [x] Movies (Home)
   - [ ] Shows
   - [ ] Search Results
   - [ ] Settings
+
+### Used libraries
+
+- [ReactJS](https://reactjs.org/)
+- [Styled-Components](https://styled-components.com/)
+- [Keen-Slider](https://keen-slider.io/)
+
+### Reference Data
+
+- [How to use media queries with styled components](https://jsramblings.com/how-to-use-media-queries-with-styled-components/)
