@@ -1,5 +1,5 @@
 /* Concept from https://jsramblings.com/how-to-use-media-queries-with-styled-components/ */
-const size = {
+export const size = {
   minPhone: "375px",
   maxPhone: "899px",
   minTablet: "900px",

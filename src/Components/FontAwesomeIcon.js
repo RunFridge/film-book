@@ -14,7 +14,7 @@ const Icon = styled.i`
 const FontAwesomeIcon = (props) => {
   return props.class ? (
     <Icon
-      className={props.class}
+      className={props.class ? props.class : null}
       color={props.color ? props.color : colors.darkBg}
       hoverColor={props.hoverColor ? props.hoverColor : props.color}
       size={props.size ? props.size : "1rem"}
@@ -23,7 +23,7 @@ const FontAwesomeIcon = (props) => {
 };
 
 FontAwesomeIcon.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   color: PropTypes.string,
   hoverColor: PropTypes.string,
   size: PropTypes.string,
