@@ -15,7 +15,7 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
+  background-color: ${colors.slightTransparentWhite};
   border-bottom: 1px solid ${colors.lightBg};
   z-index: 10;
   padding: ${vars.bodySidePadding};

@@ -16,7 +16,17 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const PosterWrapper = styled.div``;
+const PosterWrapper = styled.div`
+  animation: fadeIn ease 0.5s;
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`;
 
 const Image = styled.div`
   background-image: url(${(props) => props.source});
