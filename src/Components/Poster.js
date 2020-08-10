@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import vars from "../Style/vars";
+import { device } from "../Style/devices";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -17,6 +18,10 @@ const StyledLink = styled(Link)`
 `;
 
 const PosterWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   animation: fadeIn ease 0.5s;
   @keyframes fadeIn {
     0% {
@@ -28,12 +33,11 @@ const PosterWrapper = styled.div`
   }
 `;
 
-const Image = styled.div`
-  background-image: url(${(props) => props.source});
-  height: 300px;
-  background-size: cover;
+const Image = styled.img`
+  width: 100%;
+  height: auto;
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   box-shadow: ${vars.coolBoxShadow};
 `;
 
@@ -58,9 +62,11 @@ const Poster = ({
   return (
     <StyledLink to={isMovie ? `/movie/${id}` : `/show/${id}`}>
       <PosterWrapper>
-        <Image source={posterImage} />
-        <Title>{title}</Title>
-        <Date>{releaseDate.split("-")[0]}</Date>
+        <Image src={posterImage} />
+        <div>
+          <Title>{title}</Title>
+          <Date>{releaseDate.split("-")[0]}</Date>
+        </div>
       </PosterWrapper>
     </StyledLink>
   );

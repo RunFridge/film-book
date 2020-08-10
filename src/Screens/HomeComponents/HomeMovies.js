@@ -13,7 +13,13 @@ const HomeMovies = ({ api }) => {
   ) : loading ? (
     <Loading />
   ) : (
-    <PosterSlider array={data.results} slidesPerView={6} spacing={15} />
+    <PosterSlider
+      array={data.results}
+      phonePerView={2}
+      tabletPerView={5}
+      desktopPerView={6}
+      spacing={15}
+    />
   );
 };
 
