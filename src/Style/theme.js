@@ -9,7 +9,7 @@ export default {
       inputBackdrop: "#edf2f4",
       headerBg: "rgba(255,255,255,0.95)",
       mainBg: "#ffffff",
-      footerBg: "#2b2d42",
+      footerBg: "rgba(43,45,66,0.95)",
       enabledIcon: "#f7f7f7",
       disabledIcon: "#2b2d42",
       enabledBtn: "#d90429",
@@ -17,6 +17,7 @@ export default {
       coolShadow: `0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
       0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
       0 16px 16px rgba(0, 0, 0, 0.12)`,
+      extreme: "#000000",
     },
   },
   dark: {
@@ -29,7 +30,7 @@ export default {
       inputBackdrop: "#43455f",
       headerBg: "rgba(23,24,35,0.95)",
       mainBg: "#2b2d42",
-      footerBg: "#171823",
+      footerBg: " rgba(23,24,34,0.95)",
       enabledIcon: "#f7f7f7",
       disabledIcon: "#2b2d42",
       enabledBtn: "#d90429",
@@ -37,6 +38,7 @@ export default {
       coolShadow: `0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
       0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
       0 16px 16px rgba(0, 0, 0, 0.12)`,
+      extreme: "#ffffff",
     },
   },
 };

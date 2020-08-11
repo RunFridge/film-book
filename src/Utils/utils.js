@@ -1,9 +1,15 @@
 export const constructTMDBPosterUrl = (url, width) => {
   // build TMDB image URL based on image endpoint
+  if (url && width === "original") {
+    return `https://image.tmdb.org/t/p/original/${url}`;
+  }
   const baseUrl = `https://image.tmdb.org/t/p/w${width}/`;
   if (url) return baseUrl + url;
   else return require("../Assets/noPosterSmall.png");
 };
+
+export const constructIMDBUrl = (id) =>
+  id ? `https://www.imdb.com/title/${id}/` : null;
 
 export const parsePx = (pxSize) => {
   // Parses px sized String to Number (i.e. "800px" to 800)

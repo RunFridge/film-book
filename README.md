@@ -27,8 +27,8 @@
   - [x] Movies (Home)
   - [x] Shows
   - [x] Search Results
-  - [ ] MovieDetail
-  - [ ] ShowDetail
+  - [x] MovieDetail
+  - [x] ShowDetail
   - [ ] PersonDetail
   - [x] Settings
 - [ ] Meta

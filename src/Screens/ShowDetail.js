@@ -1,6 +1,9 @@
 import React from "react";
 import useAxios from "../Hooks/useAxios";
 import { tmdbTVApi } from "../api";
+import Loading from "../Components/Loading";
+import Detail from "./Detail";
+import Error from "../Components/Error";
 
 const ShowDetail = ({
   match: {
@@ -10,8 +13,15 @@ const ShowDetail = ({
   const { loading, data, error } = useAxios(function () {
     return tmdbTVApi.showDetail(id);
   });
-  console.log(loading, data, error);
-  return <h1>ShowDetail</h1>;
+  return loading ? (
+    <Loading />
+  ) : error ? (
+    <Error />
+  ) : (
+    <>
+      <Detail data={data} />
+    </>
+  );
 };
 
 export default ShowDetail;
