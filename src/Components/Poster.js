@@ -36,20 +36,35 @@ const Image = styled.img`
   width: 100%;
   height: auto;
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   box-shadow: ${vars.coolBoxShadow};
 `;
 
-const InfoContainer = styled.div``;
+const InfoContainer = styled.div`
+  & > :not(:last-child) {
+    margin-bottom: 5px;
+  }
+`;
 
 const Title = styled.span`
   display: block;
-  margin-bottom: 2px;
+  white-space: nowrap;
 `;
 
 const Date = styled.span`
+  display: block;
   font-size: 0.6rem;
   color: ${(props) => props.theme.colors.subText};
+`;
+
+const Score = styled.span`
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: ${(props) => props.theme.colors.secondary};
+
+  span {
+    margin: 0 5px;
+  }
 `;
 
 const Poster = ({
@@ -67,6 +82,13 @@ const Poster = ({
         <InfoContainer>
           <Title>{title}</Title>
           <Date>{releaseDate}</Date>
+          <Score>
+            평점
+            <span role="img" aria-label="Star">
+              ★
+            </span>
+            {voteAverage} / 10
+          </Score>
         </InfoContainer>
       </PosterWrapper>
     </StyledLink>

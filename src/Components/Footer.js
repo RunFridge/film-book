@@ -10,6 +10,7 @@ const FooterContainer = styled.footer`
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.footerBg};
   color: ${(props) => props.theme.colors.primary};
+  user-select: none;
 `;
 
 const Title = styled.h1`

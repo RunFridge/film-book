@@ -34,17 +34,19 @@ const List = styled.ul`
 `;
 
 const Item = styled.li`
-  cursor: pointer;
   display: flex;
   align-items: center;
   font-size: 1.1rem;
   font-weight: ${(props) => (props.current ? "bold" : "normal")};
   min-width: fit-content;
   &:not(:last-child) {
-    margin-right: 30px;
+    margin-right: 50px;
   }
   @media ${device.phone} {
     font-size: 0.9rem;
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
   }
 `;
 
@@ -79,6 +81,9 @@ const Input = styled.input`
   &::placeholder {
     color: ${(props) => props.theme.colors.placeholder};
     font-size: 0.9rem;
+    @media ${device.tablet} {
+      font-size: 0.7rem;
+    }
     @media ${device.phone} {
       color: transparent;
     }

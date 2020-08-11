@@ -18,7 +18,7 @@ const SliderWrapper = ({ api, isMovie }) => {
       phonePerView={2}
       tabletPerView={5}
       desktopPerView={6}
-      spacing={15}
+      spacing={30}
       isMovie={isMovie}
     />
   );

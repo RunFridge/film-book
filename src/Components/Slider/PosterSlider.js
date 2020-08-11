@@ -45,6 +45,7 @@ const PosterSlider = ({
       setSpv(desktopPerView);
     }
   }, [width, phonePerView, tabletPerView, desktopPerView]);
+
   return (
     <Wrapper>
       {slider ? (
