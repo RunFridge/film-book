@@ -11,6 +11,7 @@ import MovieDetail from "../Screens/MovieDetail";
 import ShowDetail from "../Screens/ShowDetail";
 import Settings from "../Screens/Settings";
 import Page404 from "../Screens/Page404";
+import PersonDetail from "../Screens/PersonDetail";
 
 const MainWrapper = styled.main`
   padding: ${vars.bodySidePadding};
@@ -27,6 +28,7 @@ export default () => {
           <Route path="/search" component={Search} />
           <Route path="/movie/:id" component={MovieDetail} />
           <Route path="/show/:id" component={ShowDetail} />
+          <Route path="/person/:id" component={PersonDetail} />
           <Route path="/settings" exact component={Settings} />
           <Route component={Page404} />
         </Switch>

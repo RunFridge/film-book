@@ -65,6 +65,23 @@ export const tmdbTVApi = {
     }),
 };
 
+export const tmdbPeopleApi = {
+  showDetail: (id) =>
+    tmdbAxios.get(`person/${id}`, {
+      params: {
+        append_to_response: "videos",
+      },
+    }),
+  search: (term) =>
+    tmdbAxios.get("search/person", {
+      params: {
+        // themoviedb API aitomatically URIencodes search term
+        query: term,
+        include_adult: true,
+      },
+    }),
+};
+
 // KOBIS API
 const kobisAxios = axios.create({
   baseURL: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/",

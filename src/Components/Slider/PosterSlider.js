@@ -21,6 +21,7 @@ const PosterSlider = ({
   desktopPerView,
   spacing,
   isMovie,
+  isPerson,
 }) => {
   const [spv, setSpv] = useState(desktopPerView);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -58,24 +59,47 @@ const PosterSlider = ({
         </>
       ) : null}
       <div ref={ref} className="keen-slider">
-        {array.map((content, idx) => (
-          <div key={idx} className="keen-slider__slide">
-            <Poster
-              id={content.id}
-              title={isMovie ? content.title : content.name}
-              posterImage={constructTMDBPosterUrl(content.poster_path, "500")}
-              releaseDate={
-                isMovie
-                  ? content.release_date
-                  : content.first_air_date
-                  ? content.first_air_date
-                  : null
-              }
-              voteAverage={content.vote_average}
-              isMovie={isMovie}
-            />
-          </div>
-        ))}
+        {isPerson // 인물 슬라이더
+          ? array.map((content, idx) => (
+              <div key={idx} className="keen-slider__slide">
+                <Poster
+                  id={content.id}
+                  title={content.name}
+                  posterImage={constructTMDBPosterUrl(
+                    content.profile_path,
+                    "500"
+                  )}
+                  releaseDate={null}
+                  voteAverage={null}
+                  isMovie={false}
+                  isPerson={true}
+                />
+              </div>
+            ))
+          : array.map((
+              content,
+              idx // TV, 영화 슬라이더
+            ) => (
+              <div key={idx} className="keen-slider__slide">
+                <Poster
+                  id={content.id}
+                  title={isMovie ? content.title : content.name}
+                  posterImage={constructTMDBPosterUrl(
+                    content.poster_path,
+                    "500"
+                  )}
+                  releaseDate={
+                    isMovie
+                      ? content.release_date
+                      : content.first_air_date
+                      ? content.first_air_date
+                      : null
+                  }
+                  voteAverage={content.vote_average}
+                  isMovie={isMovie}
+                />
+              </div>
+            ))}
         {/*  slidesPerView 보다 객체수가 적을 경우 keen-slider 객체 크기그 늘어나는것을 방지 */}
         {/* 예) slidesPerView = 6 그리고 객체수 2개 일시, 4개의 빈 객체 생성 */}
         {array.length < spv &&
@@ -93,6 +117,8 @@ PosterSlider.propTypes = {
   tabletPerView: PropTypes.number.isRequired,
   desktopPerView: PropTypes.number.isRequired,
   spacing: PropTypes.number.isRequired,
+  isMovie: PropTypes.bool,
+  isPerson: PropTypes.bool,
 };
 
 export default PosterSlider;

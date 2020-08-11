@@ -5,13 +5,13 @@ import Error from "../Error";
 import useAxios from "../../Hooks/useAxios";
 import PosterSlider from "./PosterSlider";
 
-const SliderWrapper = ({ api, isMovie, param }) => {
+const SliderWrapper = ({ api, isPerson, isMovie, param }) => {
   // Bind param to API function (Closure) 파라미터를 포함한 함수 (클로저)
   const { loading, data, error } = useAxios(api.bind(null, param));
 
-  return error ? (
+  return error ? ( // 에러
     <Error msg={error} />
-  ) : loading ? (
+  ) : loading ? ( // 로딩중
     <Loading />
   ) : (
     <>
@@ -22,6 +22,7 @@ const SliderWrapper = ({ api, isMovie, param }) => {
         desktopPerView={6}
         spacing={30}
         isMovie={isMovie}
+        isPerson={isPerson}
       />
       <div>
         {/* Search 컴포넌트 검색 결과가 없을 시 */}
@@ -37,6 +38,7 @@ const SliderWrapper = ({ api, isMovie, param }) => {
 
 SliderWrapper.propType = {
   api: PropTypes.func.isRequired,
+  isPerson: PropTypes.bool,
   isMovie: PropTypes.bool,
   param: PropTypes.string,
 };

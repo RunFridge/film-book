@@ -74,21 +74,26 @@ const Poster = ({
   posterImage,
   releaseDate,
   isMovie = false,
+  isPerson = false,
 }) => {
   return (
-    <StyledLink to={isMovie ? `/movie/${id}` : `/show/${id}`}>
+    <StyledLink
+      to={isMovie ? `/movie/${id}` : isPerson ? `/person/${id}` : `/show/${id}`}
+    >
       <PosterWrapper>
         <Image src={posterImage} />
         <InfoContainer>
           <Title>{title}</Title>
           <Date>{releaseDate}</Date>
-          <Score>
-            평점
-            <span role="img" aria-label="Star">
-              ★
-            </span>
-            {voteAverage} / 10
-          </Score>
+          {isPerson ? null : (
+            <Score>
+              평점
+              <span role="img" aria-label="Star">
+                ★
+              </span>
+              {voteAverage} / 10
+            </Score>
+          )}
         </InfoContainer>
       </PosterWrapper>
     </StyledLink>
@@ -102,6 +107,7 @@ Poster.propTypes = {
   posterImage: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
   isMovie: PropTypes.bool,
+  isPerson: PropTypes.bool,
 };
 
 export default Poster;

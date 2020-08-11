@@ -4,7 +4,7 @@ import Error from "../Components/Error";
 import { Helmet } from "react-helmet";
 import SliderWrapper from "../Components/Slider/SliderWrapper";
 import { parseQuery } from "../Utils/utils";
-import { tmdbMoviesApi, tmdbTVApi } from "../api";
+import { tmdbMoviesApi, tmdbTVApi, tmdbPeopleApi } from "../api";
 
 const SearchWrapper = styled.div`
   height: 100%;
@@ -35,6 +35,7 @@ const Search = ({ location: { search } }) => {
           <ContentTitle>TV 프로그램</ContentTitle>
           <SliderWrapper api={tmdbTVApi.search} param={query} />
           <ContentTitle>인물</ContentTitle>
+          <SliderWrapper api={tmdbPeopleApi.search} param={query} isPerson />
         </SearchWrapper>
       ) : (
         <Error />

@@ -19,13 +19,17 @@
   - [x] Movies
   - [x] Shows
   - [x] Search Results
+  - [x] MovieDetail
+  - [x] ShowDetail
+  - [x] PersonDetail
   - [x] Settings
 - [ ] Pages
   - [x] Movies (Home)
   - [x] Shows
-  - [ ] Search Results
+  - [x] Search Results
   - [ ] MovieDetail
   - [ ] ShowDetail
+  - [ ] PersonDetail
   - [x] Settings
 - [ ] Meta
   - [x] Add ContextAPI for Dark/Light Mode
