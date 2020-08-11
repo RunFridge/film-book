@@ -45,7 +45,7 @@ const Footer = () => {
           <StyledIcon className="fab fa-github" />
         </a>
       </LogoWrapper>
-      <CopyRight>&copy; FilmBook 2020</CopyRight>
+      <CopyRight>RunFridge &copy; FilmBook 2020</CopyRight>
       <ToTopButton />
     </FooterContainer>
   );
