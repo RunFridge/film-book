@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import HomeMovies from "./HomeComponents/HomeMovies";
+import SliderWrapper from "../Components/Slider/SliderWrapper";
 import { tmdbMoviesApi } from "../api";
 
 const ContentTitle = styled.h1`
@@ -13,11 +13,11 @@ const Home = () => {
   return (
     <>
       <ContentTitle>인기 상영작</ContentTitle>
-      <HomeMovies api={tmdbMoviesApi.popular} />
+      <SliderWrapper api={tmdbMoviesApi.popular} isMovie />
       <ContentTitle>현재 상영작</ContentTitle>
-      <HomeMovies api={tmdbMoviesApi.nowPlaying} />
+      <SliderWrapper api={tmdbMoviesApi.nowPlaying} isMovie />
       <ContentTitle>상영 예정작</ContentTitle>
-      <HomeMovies api={tmdbMoviesApi.upcoming} />
+      <SliderWrapper api={tmdbMoviesApi.upcoming} isMovie />
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { device } from "../Style/devices";
+import { device } from "../../Style/devices";
 
 const ArrowLeft = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-import Poster from "./Poster";
-import { constructTMDBPosterUrl } from "../Utils/utils";
-import { useScreenSize } from "../Hooks/useScreenSize";
-import { size } from "../Style/devices";
+import Poster from "../Poster";
+import { constructTMDBPosterUrl } from "../../Utils/utils";
+import { useScreenSize } from "../../Hooks/useScreenSize";
+import { size } from "../../Style/devices";
 import { PrevNav, NextNav } from "./SliderNav";
-import { parsePx } from "../Utils/utils";
+import { parsePx } from "../../Utils/utils";
 
-const SliderWrapper = styled.div`
+const Wrapper = styled.div`
   position: relative;
 `;
 
@@ -46,7 +46,7 @@ const PosterSlider = ({
     }
   }, [width, phonePerView, tabletPerView, desktopPerView]);
   return (
-    <SliderWrapper>
+    <Wrapper>
       {slider ? (
         <>
           <PrevNav disabled={slider && currentSlide === 0} prev={slider.prev} />
@@ -61,16 +61,22 @@ const PosterSlider = ({
           <div key={idx} className="keen-slider__slide">
             <Poster
               id={content.id}
-              title={content.title}
+              title={isMovie ? content.title : content.name}
               posterImage={constructTMDBPosterUrl(content.poster_path, "500")}
-              releaseDate={content.release_date}
+              releaseDate={
+                isMovie
+                  ? content.release_date
+                  : content.first_air_date
+                  ? content.first_air_date
+                  : null
+              }
               voteAverage={content.vote_average}
               isMovie={isMovie}
             />
           </div>
         ))}
       </div>
-    </SliderWrapper>
+    </Wrapper>
   );
 };
 

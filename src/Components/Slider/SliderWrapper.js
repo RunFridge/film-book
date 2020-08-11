@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Loading from "../../Components/Loading";
-import Error from "../../Components/Error";
+import Loading from "../Loading";
+import Error from "../Error";
 import useAxios from "../../Hooks/useAxios";
-import PosterSlider from "../../Components/PosterSlider";
+import PosterSlider from "./PosterSlider";
 
-const HomeMovies = ({ api }) => {
+const SliderWrapper = ({ api, isMovie }) => {
   const { loading, data, error } = useAxios(api);
 
   return error ? (
@@ -19,13 +19,14 @@ const HomeMovies = ({ api }) => {
       tabletPerView={5}
       desktopPerView={6}
       spacing={15}
-      isMovie={true}
+      isMovie={isMovie}
     />
   );
 };
 
-HomeMovies.propType = {
+SliderWrapper.propType = {
   api: PropTypes.func.isRequired,
+  isMovie: PropTypes.bool,
 };
 
-export default HomeMovies;
+export default SliderWrapper;

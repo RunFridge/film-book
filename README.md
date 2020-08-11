@@ -20,7 +20,7 @@
   - [x] Settings
 - [ ] Pages
   - [x] Movies (Home)
-  - [ ] Shows
+  - [x] Shows
   - [ ] Search Results
   - [ ] Settings
 - [ ] Meta
