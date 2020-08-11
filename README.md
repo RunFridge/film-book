@@ -35,6 +35,7 @@
 - [ ] Meta
   - [x] Add ContextAPI for Dark/Light Mode
   - [x] Theme file for both Dark/Light Mode
+  - [x] Add Trailers
   - [ ] Language Support
 
 ### Used libraries
