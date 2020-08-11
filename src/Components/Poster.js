@@ -51,7 +51,7 @@ const Title = styled.span`
   white-space: nowrap;
 `;
 
-const Date = styled.span`
+const Sub = styled.span`
   display: block;
   font-size: 0.6rem;
   color: ${(props) => props.theme.colors.subText};
@@ -72,6 +72,7 @@ const Poster = ({
   title,
   voteAverage,
   posterImage,
+  character,
   releaseDate,
   isMovie = false,
   isPerson = false,
@@ -84,16 +85,19 @@ const Poster = ({
         <Image src={posterImage} />
         <InfoContainer>
           <Title>{title}</Title>
-          <Date>{releaseDate}</Date>
-          {isPerson ? null : ( // 사람 포스터는 평점이 없음
-            <Score>
-              평점
-              <span role="img" aria-label="Star">
-                ★
-              </span>
-              {voteAverage} / 10
-            </Score>
-          )}
+          {releaseDate && <Sub>{releaseDate}</Sub>}
+          {character && <Sub>{character}</Sub>}
+          {isPerson
+            ? null
+            : voteAverage && ( // 사람 포스터는 평점이 없음
+                <Score>
+                  평점
+                  <span role="img" aria-label="Star">
+                    ★
+                  </span>
+                  {voteAverage} / 10
+                </Score>
+              )}
         </InfoContainer>
       </PosterWrapper>
     </StyledLink>
@@ -105,6 +109,7 @@ Poster.propTypes = {
   title: PropTypes.string.isRequired,
   voteAverage: PropTypes.number,
   posterImage: PropTypes.string.isRequired,
+  character: PropTypes.string,
   releaseDate: PropTypes.string,
   isMovie: PropTypes.bool,
   isPerson: PropTypes.bool,

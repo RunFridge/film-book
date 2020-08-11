@@ -8,8 +8,10 @@ export const constructTMDBPosterUrl = (url, width) => {
   else return require("../Assets/noPosterSmall.png");
 };
 
-export const constructIMDBUrl = (id) =>
-  id ? `https://www.imdb.com/title/${id}/` : null;
+export const constructIMDBUrl = (id) => {
+  if (id.includes("tt")) return id ? `https://www.imdb.com/title/${id}/` : null;
+  else return id ? `https://www.imdb.com/name/${id}/` : null;
+};
 
 export const parsePx = (pxSize) => {
   // Parses px sized String to Number (i.e. "800px" to 800)

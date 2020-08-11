@@ -75,8 +75,7 @@ const PosterSlider = ({
                     content.profile_path,
                     "500"
                   )}
-                  releaseDate={null}
-                  voteAverage={null}
+                  character={content.character}
                   isMovie={false}
                   isPerson={true}
                 />

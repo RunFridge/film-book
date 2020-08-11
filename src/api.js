@@ -34,7 +34,7 @@ export const tmdbMoviesApi = {
   movieDetail: (id) =>
     tmdbAxios.get(`movie/${id}`, {
       params: {
-        append_to_response: "videos",
+        append_to_response: "videos,credits",
       },
     }),
   search: (term) =>
@@ -53,7 +53,7 @@ export const tmdbTVApi = {
   showDetail: (id) =>
     tmdbAxios.get(`tv/${id}`, {
       params: {
-        append_to_response: "videos",
+        append_to_response: "videos,credits",
       },
     }),
   search: (term) =>

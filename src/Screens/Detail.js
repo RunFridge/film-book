@@ -5,9 +5,10 @@ import { Helmet } from "react-helmet";
 import { naverMovieApi } from "../api";
 import { constructTMDBPosterUrl, constructIMDBUrl } from "../Utils/utils";
 import Loading from "../Components/Loading";
+import PosterSlider from "../Components/Slider/PosterSlider";
 
 const Container = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 100%;
   position: relative;
 `;
@@ -36,13 +37,21 @@ const Content = styled.div`
 
 const Data = styled.div`
   width: 70%;
-  margin-left: 20px;
+  margin-left: 50px;
 `;
 
 const Title = styled.span`
   font-size: 4rem;
   font-weight: bold;
   margin-bottom: 10px;
+`;
+
+const Header = styled.h3`
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: 1px solid ${(props) => props.theme.colors.inputBackdrop};
+  user-select: none;
 `;
 
 const InfoContainer = styled.div`
@@ -97,12 +106,18 @@ const Overview = styled.p`
 `;
 
 const Cover = styled.div`
-  width: 50%;
+  width: 100%;
+  height: 500px;
   background-image: url(${(props) => props.bgImage});
   background-position: center center;
   background-size: cover;
-  height: 100%;
   border-radius: 5px;
+`;
+
+const SliderContainer = styled.div`
+  & > :not(:first-child) {
+    margin-top: 50px;
+  }
 `;
 
 const Detail = ({ data, isMovie }) => {
@@ -178,7 +193,36 @@ const Detail = ({ data, isMovie }) => {
                   </>
                 )}
             </LinkContainer>
-            {data.overview && <Overview>{data.overview}</Overview>}
+            <SliderContainer>
+              {data.overview && <Overview>{data.overview}</Overview>}
+              {data.credits && data.credits.cast && (
+                <>
+                  <Header>캐스트</Header>
+                  <PosterSlider
+                    array={data.credits.cast.slice(0, 20)}
+                    phonePerView={2}
+                    tabletPerView={5}
+                    desktopPerView={6}
+                    spacing={30}
+                    navMargin="-30px"
+                    isPerson
+                  />
+                </>
+              )}
+              {data.seasons && (
+                <>
+                  <Header>시즌</Header>
+                  <PosterSlider
+                    array={data.seasons}
+                    phonePerView={2}
+                    tabletPerView={5}
+                    desktopPerView={6}
+                    spacing={30}
+                    navMargin="-30px"
+                  />
+                </>
+              )}
+            </SliderContainer>
             {/* {data.videos.results.length > 0 && (
               <Trailer title="예고편" videos={result.videos.results} />
             )} */}
