@@ -53,7 +53,8 @@ const useAxios = (axiosInstance = defaultAxios) => {
         cancel();
       };
     }
-  }, [axiosInstance]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return state;
 };
