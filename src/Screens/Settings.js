@@ -5,7 +5,7 @@ import Switch from "react-switch";
 import { AppContext } from "../Style/AppProvider";
 
 const SettingsWrapper = styled.div`
-  height: 60vh;
+  height: 80vh;
   border: 1px solid ${(props) => props.theme.colors.inputBackdrop};
   border-radius: 15px;
   padding: 20px;
