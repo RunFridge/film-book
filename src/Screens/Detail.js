@@ -107,7 +107,7 @@ const Overview = styled.p`
 
 const Cover = styled.div`
   width: 100%;
-  height: 500px;
+  height: auto;
   background-image: url(${(props) => props.bgImage});
   background-position: center center;
   background-size: cover;
