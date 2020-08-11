@@ -8,7 +8,7 @@ import Loading from "../Components/Loading";
 import PosterSlider from "../Components/Slider/PosterSlider";
 
 const Container = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100%;
   position: relative;
 `;
