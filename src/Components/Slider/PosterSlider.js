@@ -8,7 +8,7 @@ import { constructTMDBPosterUrl } from "../../Utils/utils";
 import { useScreenSize } from "../../Hooks/useScreenSize";
 import { size } from "../../Style/devices";
 import { PrevNav, NextNav } from "./SliderNav";
-import { parsePx } from "../../Utils/utils";
+import { parsePx, zerosArr } from "../../Utils/utils";
 
 const Wrapper = styled.div`
   position: relative;
@@ -48,7 +48,7 @@ const PosterSlider = ({
 
   return (
     <Wrapper>
-      {slider ? (
+      {slider && array.length > 0 ? ( // Only render nav buttons when there are more than 1 element
         <>
           <PrevNav disabled={slider && currentSlide === 0} prev={slider.prev} />
           <NextNav
@@ -76,6 +76,12 @@ const PosterSlider = ({
             />
           </div>
         ))}
+        {/*  slidesPerView 보다 객체수가 적을 경우 keen-slider 객체 크기그 늘어나는것을 방지 */}
+        {/* 예) slidesPerView = 6 그리고 객체수 2개 일시, 4개의 빈 객체 생성 */}
+        {array.length < spv &&
+          zerosArr(spv - array.length).map((_, idx) => (
+            <div key={idx} className="keen-slider__slide" />
+          ))}
       </div>
     </Wrapper>
   );

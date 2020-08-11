@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import vars from "../Style/vars";
@@ -108,17 +108,7 @@ const StyledIcon = styled.i`
   font-size: 1rem;
 `;
 
-export default withRouter(({ location: { pathname }, history: { push } }) => {
-  const [query, setQuery] = useState("");
-  const onSubmit = (e) => {
-    e.preventDefault();
-    push(`/search?query=${query}`);
-  };
-
-  const onChange = useCallback((e) => {
-    setQuery(e.target.value);
-  }, []);
-
+export default withRouter(({ location: { pathname } }) => {
   return (
     <Header>
       <HeaderDiv>
@@ -138,11 +128,11 @@ export default withRouter(({ location: { pathname }, history: { push } }) => {
       </HeaderDiv>
       <HeaderDiv>
         <Item>
-          <Form onSubmit={onSubmit}>
+          <Form action="/search" method="get">
             <SearchBar>
               <StyledIcon className="fas fa-search" />
               <Input
-                onChange={onChange}
+                name="query"
                 placeholder="작품, 제목, 배우, 감독을 검색해보세요."
               />
             </SearchBar>
