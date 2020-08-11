@@ -10,12 +10,11 @@ const FooterContainer = styled.footer`
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.footerBg};
   color: ${(props) => props.theme.colors.primary};
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   user-select: none;
 `;
 
-const Title = styled.h1`
-  font-weight: bold;
-`;
+const SiteName = styled.h1``;
 
 const StyledIcon = styled.i`
   color: ${(props) => props.theme.colors.enabledIcon};
@@ -36,7 +35,7 @@ const CopyRight = styled.span`
 const Footer = () => {
   return (
     <FooterContainer>
-      <Title>FilmBook</Title>
+      <SiteName>FilmBook</SiteName>
       <LogoWrapper>
         <a
           href="https://github.com/RunFridge/film-book"
