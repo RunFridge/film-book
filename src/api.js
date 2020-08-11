@@ -66,7 +66,7 @@ export const tmdbTVApi = {
 };
 
 export const tmdbPeopleApi = {
-  showDetail: (id) =>
+  personDetail: (id) =>
     tmdbAxios.get(`person/${id}`, {
       params: {
         append_to_response: "videos",

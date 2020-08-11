@@ -85,7 +85,7 @@ const Poster = ({
         <InfoContainer>
           <Title>{title}</Title>
           <Date>{releaseDate}</Date>
-          {isPerson ? null : (
+          {isPerson ? null : ( // 사람 포스터는 평점이 없음
             <Score>
               평점
               <span role="img" aria-label="Star">
@@ -103,9 +103,9 @@ const Poster = ({
 Poster.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  voteAverage: PropTypes.number.isRequired,
+  voteAverage: PropTypes.number,
   posterImage: PropTypes.string.isRequired,
-  releaseDate: PropTypes.string.isRequired,
+  releaseDate: PropTypes.string,
   isMovie: PropTypes.bool,
   isPerson: PropTypes.bool,
 };
