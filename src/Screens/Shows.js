@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SliderWrapper from "../Components/Slider/SliderWrapper";
 import { tmdbTVApi } from "../api";
+import { Helmet } from "react-helmet";
 
 const ContentTitle = styled.h1`
   margin: 30px 0;
@@ -12,6 +13,9 @@ const ContentTitle = styled.h1`
 const Shows = () => {
   return (
     <>
+      <Helmet>
+        <title>Film Book | Shows</title>
+      </Helmet>
       <ContentTitle>인기 상영작</ContentTitle>
       <SliderWrapper api={tmdbTVApi.popular} />
       <ContentTitle>높은 평점작</ContentTitle>

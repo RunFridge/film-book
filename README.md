@@ -24,7 +24,7 @@
   - [x] Movies (Home)
   - [x] Shows
   - [ ] Search Results
-  - [ ] Settings
+  - [x] Settings
 - [ ] Meta
   - [x] Add ContextAPI for Dark/Light Mode
   - [x] Theme file for both Dark/Light Mode

@@ -24,8 +24,8 @@ const AppProvider = ({ children }) => {
       }
     });
   };
-
-  const value = { toggleTheme };
+  const isDarkMode = themeMode === "dark" ? true : false;
+  const value = { isDarkMode, toggleTheme };
   const currentTheme = theme[themeMode];
 
   return (
