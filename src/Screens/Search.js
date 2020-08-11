@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Error from "../Components/Error";
 import { Helmet } from "react-helmet";
 import SliderWrapper from "../Components/Slider/SliderWrapper";
-import { parseQuery } from "../Utils/utils";
+import { SearchContext } from "../Components/SearchProvider";
 import { tmdbMoviesApi, tmdbTVApi, tmdbPeopleApi } from "../api";
 import { withRouter } from "react-router-dom";
 
@@ -21,15 +21,8 @@ const ContentTitle = styled.h1`
   }
 `;
 
-const Search = ({ history }) => {
-  // Fix: History Push 가 컴포넌트를 업데이트하지 않는 현상 고치기
-  // console.log(parseQuery(history.location.search));
-  // const [term, setTerm] = useState(parseQuery(history.location.search));
-  // useEffect(() => {
-  //   setTerm(parseQuery(history.location.search));
-  // }, []);
-
-  const term = parseQuery(history.location.search);
+const Search = () => {
+  const { term } = useContext(SearchContext);
 
   return (
     <div>
