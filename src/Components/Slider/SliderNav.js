@@ -29,7 +29,7 @@ const LeftWrapper = styled.div`
     props.disabled
       ? props.theme.colors.disabledBtn
       : props.theme.colors.enabledBtn};
-  left: -60px;
+  left: ${(props) => props.navMargin};
   @media ${device.phone} {
     left: 10px;
   }
@@ -42,24 +42,32 @@ const RightWrapper = styled.div`
     props.disabled
       ? props.theme.colors.disabledBtn
       : props.theme.colors.enabledBtn};
-  right: -60px;
+  right: ${(props) => props.navMargin};
   @media ${device.phone} {
     right: 10px;
   }
   cursor: ${(props) => (props.disabled ? "normal" : "pointer")};
 `;
 
-export const PrevNav = ({ disabled, prev }) => {
+export const PrevNav = ({ disabled, prev, navMargin }) => {
   return (
-    <LeftWrapper disabled={disabled} onClick={() => prev()}>
+    <LeftWrapper
+      disabled={disabled}
+      onClick={() => prev()}
+      navMargin={navMargin}
+    >
       <ArrowLeft />
     </LeftWrapper>
   );
 };
 
-export const NextNav = ({ disabled, next }) => {
+export const NextNav = ({ disabled, next, navMargin }) => {
   return (
-    <RightWrapper disabled={disabled} onClick={() => next()}>
+    <RightWrapper
+      disabled={disabled}
+      onClick={() => next()}
+      navMargin={navMargin}
+    >
       <ArrowRight />
     </RightWrapper>
   );

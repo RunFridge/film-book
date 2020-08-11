@@ -20,6 +20,7 @@ const PosterSlider = ({
   tabletPerView,
   desktopPerView,
   spacing,
+  navMargin = "-60px",
   isMovie,
   isPerson,
 }) => {
@@ -51,10 +52,15 @@ const PosterSlider = ({
     <Wrapper>
       {slider && array.length > 0 ? ( // Only render nav buttons when there are more than 1 element
         <>
-          <PrevNav disabled={slider && currentSlide === 0} prev={slider.prev} />
+          <PrevNav
+            disabled={slider && currentSlide === 0}
+            prev={slider.prev}
+            navMargin={navMargin}
+          />
           <NextNav
             disabled={slider && currentSlide === slider.details().size - spv}
             next={slider.next}
+            navMargin={navMargin}
           />
         </>
       ) : null}
@@ -117,6 +123,7 @@ PosterSlider.propTypes = {
   tabletPerView: PropTypes.number.isRequired,
   desktopPerView: PropTypes.number.isRequired,
   spacing: PropTypes.number.isRequired,
+  navMargin: PropTypes.string,
   isMovie: PropTypes.bool,
   isPerson: PropTypes.bool,
 };

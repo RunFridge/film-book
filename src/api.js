@@ -69,7 +69,7 @@ export const tmdbPeopleApi = {
   personDetail: (id) =>
     tmdbAxios.get(`person/${id}`, {
       params: {
-        append_to_response: "videos",
+        append_to_response: "movie_credits",
       },
     }),
   search: (term) =>

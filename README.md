@@ -23,13 +23,13 @@
   - [x] ShowDetail
   - [x] PersonDetail
   - [x] Settings
-- [ ] Pages
+- [x] Pages
   - [x] Movies (Home)
   - [x] Shows
   - [x] Search Results
   - [x] MovieDetail
   - [x] ShowDetail
-  - [ ] PersonDetail
+  - [x] PersonDetail
   - [x] Settings
 - [ ] Meta
   - [x] Add ContextAPI for Dark/Light Mode
