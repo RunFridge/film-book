@@ -109,6 +109,18 @@ const StyledIcon = styled.i`
 `;
 
 export default withRouter(({ location: { pathname } }) => {
+  // const history = useHistory();
+  // const [query, setQuery] = useState("");
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   history.push(`/search?query=${query}`);
+  // };
+
+  // const onChange = useCallback((e) => {
+  //   setQuery(e.target.value);
+  // }, []);
+
   return (
     <Header>
       <HeaderDiv>
@@ -128,12 +140,17 @@ export default withRouter(({ location: { pathname } }) => {
       </HeaderDiv>
       <HeaderDiv>
         <Item>
-          <Form action="/search" method="get">
+          <Form
+            action="/search"
+            type="get"
+            // onSubmit={handleSubmit}
+          >
             <SearchBar>
               <StyledIcon className="fas fa-search" />
               <Input
                 name="query"
                 placeholder="작품, 제목, 배우, 감독을 검색해보세요."
+                // onChange={onChange}
               />
             </SearchBar>
           </Form>
