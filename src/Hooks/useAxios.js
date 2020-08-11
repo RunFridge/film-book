@@ -9,7 +9,9 @@ const useAxios = (axiosInstance = defaultAxios) => {
   });
 
   useEffect(() => {
+    let unmounted = false;
     if (typeof axiosInstance !== "function") {
+      // Check if axiosInstance is a function
       setState((prevState) => {
         return {
           ...prevState,
@@ -24,25 +26,32 @@ const useAxios = (axiosInstance = defaultAxios) => {
         cancelToken: new axios.CancelToken((c) => (cancel = c)),
       })
         .then(({ data }) => {
-          setState((prevState) => {
-            return {
-              ...prevState,
-              loading: false,
-              data,
-            };
-          });
+          if (!unmounted) {
+            setState((prevState) => {
+              return {
+                ...prevState,
+                loading: false,
+                data,
+              };
+            });
+          }
         })
         .catch((err) => {
-          if (axios.isCancel(err)) return;
-          setState((prevState) => {
-            return {
-              ...prevState,
-              loading: false,
-              error: err.message,
-            };
-          });
+          if (!unmounted) {
+            if (axios.isCancel(err)) return;
+            setState((prevState) => {
+              return {
+                ...prevState,
+                loading: false,
+                error: err.message,
+              };
+            });
+          }
         });
-      return () => cancel();
+      return () => {
+        unmounted = true;
+        cancel();
+      };
     }
   }, [axiosInstance]);
 
