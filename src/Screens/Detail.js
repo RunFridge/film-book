@@ -4,11 +4,16 @@ import useAxios from "../Hooks/useAxios";
 import { Helmet } from "react-helmet";
 import { naverMovieApi } from "../api";
 import { constructTMDBPosterUrl, constructIMDBUrl } from "../Utils/utils";
+import { device } from "../Style/devices";
 import Loading from "../Components/Loading";
 import PosterSlider from "../Components/Slider/PosterSlider";
+import VideoSlider from "../Components/Slider/VideoSlider";
 
 const Container = styled.div`
-  height: 100vh;
+  height: 160vh;
+  @media ${device.phone} {
+    height: 150vh;
+  }
   width: 100%;
   position: relative;
 `;
@@ -107,17 +112,40 @@ const Overview = styled.p`
 
 const Cover = styled.div`
   width: 100%;
-  height: auto;
+  height: 40%;
   background-image: url(${(props) => props.bgImage});
   background-position: center center;
   background-size: cover;
   border-radius: 5px;
+
+  @media ${device.phone} {
+    display: none;
+  }
+  @media ${device.tablet} {
+    display: none;
+  }
 `;
 
 const SliderContainer = styled.div`
   & > :not(:first-child) {
     margin-top: 50px;
   }
+`;
+
+const CompanyContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+`;
+
+const CompanyLogo = styled.img`
+  width: auto;
+  height: 2rem;
+`;
+
+const VidContainer = styled.div`
+  margin-bottom: none;
 `;
 
 const Detail = ({ data, isMovie }) => {
@@ -193,6 +221,18 @@ const Detail = ({ data, isMovie }) => {
                   </>
                 )}
             </LinkContainer>
+            {data.production_companies && (
+              <CompanyContainer>
+                {data.production_companies.map((comp, idx) => (
+                  <div key={idx}>
+                    <CompanyLogo
+                      src={constructTMDBPosterUrl(comp.logo_path, "300")}
+                      alt={comp.name}
+                    />
+                  </div>
+                ))}
+              </CompanyContainer>
+            )}
             <SliderContainer>
               {data.overview && <Overview>{data.overview}</Overview>}
               {data.credits && data.credits.cast && (
@@ -223,9 +263,11 @@ const Detail = ({ data, isMovie }) => {
                 </>
               )}
             </SliderContainer>
-            {/* {data.videos.results.length > 0 && (
-              <Trailer title="예고편" videos={result.videos.results} />
-            )} */}
+            <VidContainer>
+              {data.videos.results && (
+                <VideoSlider videos={data.videos.results} />
+              )}
+            </VidContainer>
           </Data>
         </Content>
       </Container>
