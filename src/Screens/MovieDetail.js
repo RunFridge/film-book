@@ -13,7 +13,6 @@ const MovieDetail = ({
   const { loading, data, error } = useAxios(function () {
     return tmdbMoviesApi.movieDetail(id);
   });
-  console.log(data);
   return loading ? (
     <Loading />
   ) : error ? (
