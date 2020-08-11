@@ -23,6 +23,7 @@ const tmdbAxios = axios.create({
   params: {
     api_key: process.env.REACT_APP_THEMOVIEDB_APIKEY,
     language: "ko-KR",
+    region: "KR",
   },
 });
 
