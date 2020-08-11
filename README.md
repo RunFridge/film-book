@@ -1,4 +1,6 @@
-# Film Book
+<p align="center">
+   <img src="src/Assets/logo.png" width="400"/>
+</p>
 
 > A Movie catalog website built with React JS
 

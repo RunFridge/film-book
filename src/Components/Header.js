@@ -91,11 +91,13 @@ const Input = styled.input`
 `;
 
 const Logo = styled.div`
-  background-image: url("https://via.placeholder.com/150x35");
+  background-image: url("https://i.ibb.co/Vx6sB24/logo.png");
+  background-size: cover;
   width: 150px;
   height: 35px;
   @media ${device.phone} {
-    background-image: url("https://via.placeholder.com/35");
+    background-image: url("https://i.ibb.co/pKBtXNb/square-Logo.png");
+    background-size: cover;
     width: 35px;
     height: 35px;
   }
