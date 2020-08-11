@@ -4,7 +4,7 @@ import vars from "../Style/vars";
 import ToTopButton from "./ToTopButton";
 
 const FooterContainer = styled.footer`
-  margin-top: 30px;
+  margin-top: 300px;
   height: 250px;
   ${vars.flexCenter};
   flex-direction: column;

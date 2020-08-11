@@ -1,8 +1,9 @@
-import React, { useCallback, useState, useRef } from "react";
+import React, { useCallback, useState, useRef, useContext } from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import vars from "../Style/vars";
 import { device } from "../Style/devices";
+import { SearchContext } from "./SearchProvider";
 
 const Header = styled.header`
   position: fixed;
@@ -109,16 +110,17 @@ const StyledIcon = styled.i`
 `;
 
 export default withRouter(({ location: { pathname } }) => {
-  // const history = useHistory();
-  const [term, setTerm] = useState("");
+  const { setTerm } = useContext(SearchContext);
+  const [query, setQuery] = useState("");
   const LinkRef = useRef();
   const handleSubmit = (e) => {
     e.preventDefault();
+    setTerm(query);
     LinkRef.current.click();
   };
 
   const onChange = useCallback((e) => {
-    setTerm(e.target.value);
+    setQuery(e.target.value);
   }, []);
 
   return (
@@ -146,7 +148,7 @@ export default withRouter(({ location: { pathname } }) => {
             onSubmit={handleSubmit}
           >
             <SearchBar>
-              <Link to={`/search?query=${term}`} ref={LinkRef}>
+              <Link to="/search" ref={LinkRef}>
                 <StyledIcon className="fas fa-search" />
               </Link>
               <Input
