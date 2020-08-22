@@ -38,6 +38,12 @@
   - [x] Add Trailers
   - [ ] Language Support
 
+### Known Bugs & Issues
+
+- Page not re-rendering when searched twice
+- Page not responsive when mobile/tablet sized screen
+- Verbose Detail.js code, need refactoring
+
 ### Used libraries
 
 - [ReactJS](https://reactjs.org/)
@@ -48,3 +54,4 @@
 
 - [How to use media queries with styled components](https://jsramblings.com/how-to-use-media-queries-with-styled-components/)
 - [Light Dark Mode toggle with styled components](https://dev.to/sorinc6/light-dark-mode-toggle-with-react-using-context-api-and-styled-components-347i)
+- [NomadCoders](http://nomadcoders.co/)
