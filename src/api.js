@@ -23,6 +23,10 @@ const tmdbAxios = axios.create({
   params: {
     api_key: process.env.REACT_APP_THEMOVIEDB_APIKEY,
     language: "ko-KR",
+<<<<<<< HEAD
+=======
+    // region: "KR",
+>>>>>>> 5d9487301a7f6bfa5853cce7112f0a34933d17de
   },
 });
 
@@ -76,6 +80,10 @@ export const tmdbPeopleApi = {
       params: {
         // themoviedb API aitomatically URIencodes search term
         query: term,
+<<<<<<< HEAD
+=======
+        // include_adult: true,
+>>>>>>> 5d9487301a7f6bfa5853cce7112f0a34933d17de
       },
     }),
 };
