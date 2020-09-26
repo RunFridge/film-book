@@ -10,12 +10,25 @@
   "dependencies": {
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
+    "dotenv": "^8.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "cache-loader": "^4.1.0",
+    "file-loader": "^6.1.0",
+    "html-webpack-plugin": "^4.5.0",
+    "ts-loader": "^8.0.4",
     "typescript": "^4.0.3",
+    "url-loader": "^4.1.0",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-manifest-plugin": "^2.2.0"
+  },
+  "scripts": {
+    "prebuild": "node scripts/prebuild",
+    "build": "webpack -p --env production",
+    "start": "webpack-dev-server --env development"
   }
 }
