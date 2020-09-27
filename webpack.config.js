@@ -83,5 +83,6 @@ module.exports = (webpackEnv) => {
       overlay: true,
       stats: "errors-warnings",
     },
+    devtool: webpackEnv.production ? "source-map" : "cheap-module-source-map",
   };
 };
