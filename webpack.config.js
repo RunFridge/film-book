@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const path = require("path");
 const dotenv = require("dotenv");
@@ -60,6 +61,7 @@ module.exports = (webpackEnv) => {
       extensions: [".tsx", ".ts", ".js"],
     },
     plugins: [
+      new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({ template: appHtml }),
       new webpack.DefinePlugin({
         "process.env": JSON.stringify(
