@@ -1,12 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import { HashRouter as Router } from "react-router-dom";
 import { ApolloProvider } from "@apollo/client";
 import client from "./apollo";
+import App from "./App";
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
-  document.getElementById("root")
+  <Router>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </Router>,
+  document.getElementById("root"),
 );
