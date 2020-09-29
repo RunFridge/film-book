@@ -6,7 +6,8 @@
 
 [![Author](https://img.shields.io/badge/author-RunFridge-green?style=flat)](https://github.com/RunFridge/film-book)
 [![License](https://img.shields.io/github/license/RunFridge/film-book)](https://github.com/RunFridge/film-book/blob/dev/LICENSE)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/39906376-fa5e-490c-9dd1-63604ee4f025/deploy-status)](https://app.netlify.com/sites/film-book/deploys)
+
+<!-- [![Netlify Status](https://api.netlify.com/api/v1/badges/39906376-fa5e-490c-9dd1-63604ee4f025/deploy-status)](https://app.netlify.com/sites/film-book/deploys) -->
 
 ### TODO List
 
@@ -17,26 +18,29 @@
 
 - Routers
 
-  - [ ] Movies `/`
+  - [x] Movies `/`
     - [ ] Now playing movies
     - [ ] Upcoming movies
     - [ ] Popular movies
-  - [ ] Shows `/shows`
+  - [x] Shows `/shows`
     - [ ] Airing today shows
     - [ ] Popular shows
     - [ ] Top Rated shows
-  - [ ] Search Results `/search`
+  - [x] Search Results `/results`
     - [ ] Movie search results
     - [ ] Show search results
     - [ ] Person search results
-  - [ ] Movie details `/movie/$id`
+  - [x] Movie details `/movie/:id`
     - [ ] Similar movies
     - [ ] Cast / Crew
-  - [ ] Show details `/show/$id`
+  - [x] Show details `/show/:id`
     - [ ] Similar shows
     - [ ] Cast / Crew
-  - [ ] Person details `/person/$id`
+    - [x] Season details `/show/:id/season/:seasonNumber`
+    - [x] Episode details `/show/:id/season/:seasonNumber/episode/:episodeNumber`
+  - [x] Person details `/person/:id`
     - [ ] Cast / Crew
+  - [x] 404 Not found Route
 
 - Components
 
@@ -55,6 +59,18 @@
     - [ ] Page not re-rendering when searched twice
     - [ ] Page not responsive when mobile/tablet sized screen
   - [ ] Comment functions
+
+### Development guide
+
+1. Install [Yarn](https://yarnpkg.com/getting-started/install) for package / dependency management
+2. Install dependencies using the following command:
+   ```sh
+   yarn
+   ```
+3. Run development server using the following command:
+   ```sh
+   yarn start
+   ```
 
 ### Used libraries
 
