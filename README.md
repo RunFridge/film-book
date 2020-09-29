@@ -44,11 +44,11 @@
 
 - Components
 
-  - [ ] Header / Navbar
+  - [x] Header / Navbar
     - [ ] Menu navigations
     - [ ] Search input
   - [ ] Main
-  - [ ] Footer
+  - [x] Footer
     - [ ] Copyright
     - [ ] Github link
 
