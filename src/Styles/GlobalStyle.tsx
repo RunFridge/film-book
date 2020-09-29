@@ -7,16 +7,11 @@ const GlobalStyle = createGlobalStyle`
     };
 
     /* Import Font */
-    @font-face { 
-        font-family: 'JSDongkang-Regular'; 
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSDongkang-RegularA1.woff') format('woff'); 
-        font-weight: normal; 
-        font-style: normal; 
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
 
     /* Global body style */
     body {
-        font-family: JSDongkang-Regular, "sans-serif";
+        font-family: "Noto Sans KR", sans-serif;;
     }
 `;
 
