@@ -1,11 +1,104 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
-const Wrapper = styled.header``;
+// Hooks
+import useScreenSize from "../Hooks/useScreenSize";
 
-const Header = withRouter(({ location: { pathname } }) => {
-  return <Wrapper>Navbar</Wrapper>;
-});
+// Types
+import { MobileMenuItemType, Theme } from "../@types/style";
+
+/*
+==========================
+    Styled Components
+==========================
+*/
+const NavContainer = styled.header`
+  /* Display */
+  display: flex;
+  align-items: center;
+
+  /* Size */
+  height: 80px;
+
+  /* Responsive */
+  @media only screen and (min-width: 550px) {
+    /* Desktop / Tablet */
+    /* Style */
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 0px 0px;
+
+    /* Size */
+    height: 60px;
+  }
+`;
+
+const MenuContainer = styled.ul`
+  /* Display */
+  display: flex;
+  align-items: center;
+
+  /* Size */
+  width: 100%;
+  padding: 0;
+
+  /* List style */
+  list-style-type: none;
+`;
+
+const MobileMenuItem = styled.li<MobileMenuItemType>`
+  /* Size */
+  padding: 0 15px;
+
+  /* Font */
+  font-size: 1.5em;
+  font-weight: bold;
+  color: ${({ current, theme }: { current: boolean; theme: Theme }): string =>
+    current ? theme.enabled : theme.disabled};
+
+  /* Menu divider (imported from https://pedia.watcha.com/ko-KR) */
+  &:not(:last-child)::after {
+    content: "";
+    display: inline-block;
+    position: relative;
+    left: 15px;
+    background: rgb(209, 209, 210);
+    width: 1px;
+    height: 13px;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  &:visited {
+    color: inherit;
+  }
+`;
+
+/*
+==========================
+    React Element
+==========================
+*/
+const Header = withRouter(
+  ({ location: { pathname } }): ReactElement => {
+    const [width, height] = useScreenSize();
+    return (
+      <NavContainer>
+        <MenuContainer>
+          <MobileMenuItem current={pathname === "/"}>
+            <StyledLink to="/">영화</StyledLink>
+          </MobileMenuItem>
+          <MobileMenuItem current={pathname === "/shows"}>
+            <StyledLink to="/shows">TV 프로그램</StyledLink>
+          </MobileMenuItem>
+          <MobileMenuItem current={pathname === "/settings"}>
+            <StyledLink to="/settings">설정</StyledLink>
+          </MobileMenuItem>
+        </MenuContainer>
+      </NavContainer>
+    );
+  }
+);
 
 export default Header;
