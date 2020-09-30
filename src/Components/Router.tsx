@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 // Page components
 import Home from "../Pages/Home";
 import Shows from "../Pages/Shows";
+import Search from "../Pages/Search";
 import Results from "../Pages/Results";
 import MovieDetail from "../Pages/MovieDetail";
 import ShowDetail from "../Pages/ShowDetail";
@@ -17,6 +18,7 @@ const Router = (): ReactElement => (
   <Switch>
     <Route path="/" exact component={Home} />
     <Route path="/shows" exact component={Shows} />
+    <Route path="/search" component={Search} />
     <Route path="/results" component={Results} />
     <Route path="/movie/:id" component={MovieDetail} />
     <Route path="/show/:id" exact component={ShowDetail} />

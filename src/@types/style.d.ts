@@ -11,3 +11,7 @@ export interface Theme {
 export type MobileMenuItemType = {
   current: boolean;
 };
+
+export type MobileMenuFooterButtonType = {
+  icon: string;
+};

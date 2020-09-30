@@ -89,10 +89,14 @@ const Header = withRouter(
     return (
       <NavContainer>
         <MenuContainer>
-          <MobileMenuItem current={pathname === "/"}>
+          <MobileMenuItem
+            current={pathname === "/" || pathname.includes("movie")}
+          >
             <StyledLink to="/">영화</StyledLink>
           </MobileMenuItem>
-          <MobileMenuItem current={pathname === "/shows"}>
+          <MobileMenuItem
+            current={pathname === "/shows" || pathname.includes("show")}
+          >
             <StyledLink to="/shows">TV 프로그램</StyledLink>
           </MobileMenuItem>
           <MobileMenuItem current={pathname === "/settings"}>
