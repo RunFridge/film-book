@@ -5,6 +5,7 @@ export interface Theme {
   bgPrimary: string;
   bgSecondary: string;
   navColor: string;
+  borderColor: string;
 }
 
 export type MobileMenuItemType = {

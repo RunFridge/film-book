@@ -21,6 +21,9 @@ const NavContainer = styled.header`
   /* Size */
   height: 80px;
 
+  /* Style */
+  background: ${({ theme }: { theme: Theme }): string => theme.navColor};
+
   /* Responsive */
   @media only screen and (min-width: 550px) {
     /* Desktop / Tablet */

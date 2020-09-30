@@ -1,4 +1,6 @@
-const theme = {
+import { Theme } from "../@types/style";
+
+const theme: { light: Theme; dark: Theme } = {
   light: {
     enabled: "#292A32",
     disabled: "#A5A5AA",
@@ -6,6 +8,7 @@ const theme = {
     bgPrimary: "#FFF",
     bgSecondary: "#F5F5F5",
     navColor: "rgba(255, 255, 255, .8)",
+    borderColor: "#d2d2d2",
   },
   dark: {
     enabled: "#FFF",
@@ -14,6 +17,7 @@ const theme = {
     bgPrimary: "#2B2D42",
     bgSecondary: "#43455F",
     navColor: "rgba(0, 0, 0, 0.8)",
+    borderColor: "#d2d2d2",
   },
 };
 
