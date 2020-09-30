@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
-import styled from "styled-components";
 import { Switch, Route } from "react-router-dom";
+
+// Page components
 import Home from "../Pages/Home";
 import Shows from "../Pages/Shows";
 import Results from "../Pages/Results";
@@ -10,8 +11,9 @@ import SeasonDetail from "../Pages/SeasonDetail";
 import EpisodeDetail from "../Pages/EpisodeDetail";
 import PersonDetail from "../Pages/PersonDetail";
 import Page404 from "../Pages/Page404";
+import Settings from "../Pages/Settings";
 
-const Router = (): ReactElement =>
+const Router = (): ReactElement => (
   <Switch>
     <Route path="/" exact component={Home} />
     <Route path="/shows" exact component={Shows} />
@@ -28,7 +30,9 @@ const Router = (): ReactElement =>
       component={EpisodeDetail}
     />
     <Route path="/person/:id" component={PersonDetail} />
+    <Route path="/settings" component={Settings} />
     <Route component={Page404} />
-  </Switch>;
+  </Switch>
+);
 
 export default Router;
