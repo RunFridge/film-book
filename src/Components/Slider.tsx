@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 // Keen Slider
@@ -59,10 +59,12 @@ export const MovieSlider = ({
   movies: [Movie];
   sliderTitle: string;
 }): ReactElement => {
-  // Responsive slider with screen size
+  // States
   const [width, _] = useScreenSize();
   const [slidesPerView, setSlidesPerView] = useState(6);
+  const [pause, setPause] = useState(false);
 
+  // Responsive slider with screen size
   useEffect((): void => {
     if (size.minPhone < width && width < size.maxPhone) {
       // Phone
@@ -77,9 +79,43 @@ export const MovieSlider = ({
   }, [width]);
 
   // Keen Slider REF
-  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+  const timer = useRef<number>();
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     slidesPerView,
+    spacing: 5,
+    loop: true,
+    dragStart: () => {
+      setPause(true);
+    },
+    dragEnd: () => {
+      setPause(false);
+    },
   });
+
+  // Auto scrolling
+  useEffect(() => {
+    if (sliderRef.current !== null) {
+      // Stop autoscroll when mouseover
+      sliderRef.current.addEventListener("mouseover", () => {
+        setPause(true);
+      });
+      // Start autoscroll when mouseout
+      sliderRef.current.addEventListener("mouseout", () => {
+        setPause(false);
+      });
+    }
+  }, [sliderRef]);
+  useEffect(() => {
+    // Set autoscroll interval
+    timer.current = setInterval(() => {
+      if (!pause && slider) {
+        slider.next();
+      }
+    }, 5000);
+    return () => {
+      clearInterval(timer.current);
+    };
+  }, [pause, slider]);
 
   // React Element
   return (
