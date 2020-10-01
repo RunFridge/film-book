@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
+import { responsiveOn } from "../Styles/Responsive";
 
 // Hooks
 import useScreenSize from "../Hooks/useScreenSize";
@@ -25,7 +26,7 @@ const NavContainer = styled.header`
   background: ${({ theme }: { theme: Theme }): string => theme.navColor};
 
   /* Responsive Desktop */
-  @media only screen and (min-width: 550px) {
+  ${responsiveOn.desktop} {
     /* Style */
     box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 0px 0px;
 

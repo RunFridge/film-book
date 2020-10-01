@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
+import { responsiveOn } from "../Styles/Responsive";
 
 // Types
 import { Theme } from "../@types/style";
@@ -35,7 +36,7 @@ const FooterContainer = styled.footer`
   font-size: 1.2em;
 
   /* Responsive Desktop */
-  @media only screen and (min-width: 550px) {
+  ${responsiveOn.desktop} {
     /* Position */
     position: static;
   }
