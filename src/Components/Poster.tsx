@@ -16,6 +16,16 @@ import { Theme } from "../@types/style";
     Styled Components
 ==========================
 */
+const KeenSliderContainer = styled.div`
+  /* Size */
+  height: 100%;
+
+  /* Display */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
 const StyledLink = styled(Link)`
   /* Link Style */
   text-decoration: none;
@@ -25,30 +35,27 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Container = styled.div``;
-
 const PosterImage = styled.img`
   /* Size */
-  width: 250px;
+  width: 350px;
 
   /* Box Style */
-  border-radius: 2em;
-  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-    0 100px 80px rgba(0, 0, 0, 0.12);
+  border-radius: 1em;
 `;
 
 const Contents = styled.div`
-  /* Display */
-
-  /* Size */
-  height: 3em;
-
   /* Font Style */
+  font-size: 1em;
+`;
+
+const Title = styled.h3``;
+
+const ReleaseDate = styled.p`
+  /* Font style */
+  opacity: 0.8;
   font-size: 0.8em;
 `;
-const Title = styled.h3``;
+
 const Rating = styled.p`
   /* Font Style */
   color: ${({ theme }: { theme: Theme }): string => theme.primary};
@@ -69,31 +76,39 @@ const Rating = styled.p`
 const Poster = ({
   id,
   title,
+  releaseDate,
   rating,
   posterSrc,
   isMovie,
 }: {
   id: number;
   title: string;
+  releaseDate: string;
   rating: number;
   posterSrc: string | null;
   isMovie: boolean;
-}): ReactElement => (
-  <StyledLink to={isMovie ? `/movie/${id}` : `/show/${id}`}>
-    <Container>
-      <PosterImage
-        src={
-          posterSrc
-            ? constructImageUri(posterSrc, posterSizes.w500)
-            : noPosterImg
-        }
-      />
-      <Contents>
-        <Title>{title}</Title>
-        <Rating>{rating}</Rating>
-      </Contents>
-    </Container>
-  </StyledLink>
-);
+}): ReactElement => {
+  if (title.length > 18) {
+    title = title.slice(0, 15) + "...";
+  }
+  return (
+    <KeenSliderContainer className="keen-slider__slide">
+      <StyledLink to={isMovie ? `/movie/${id}` : `/show/${id}`}>
+        <PosterImage
+          src={
+            posterSrc
+              ? constructImageUri(posterSrc, posterSizes.w500)
+              : noPosterImg
+          }
+        />
+        <Contents>
+          <Title>{title}</Title>
+          <ReleaseDate>{releaseDate}</ReleaseDate>
+          <Rating>{rating ? `${rating} / 10` : "No rating"}</Rating>
+        </Contents>
+      </StyledLink>
+    </KeenSliderContainer>
+  );
+};
 
 export default Poster;

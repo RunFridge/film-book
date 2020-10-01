@@ -15,6 +15,11 @@ import { Theme } from "../@types/style";
 ==========================
 */
 const NavContainer = styled.header`
+  /* Position */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
   /* Display */
   display: flex;
   align-items: center;
