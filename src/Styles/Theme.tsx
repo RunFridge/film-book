@@ -9,15 +9,17 @@ const theme: { light: Theme; dark: Theme } = {
     bgSecondary: "#F5F5F5",
     navColor: "rgba(255, 255, 255, .8)",
     borderColor: "#d2d2d2",
+    textShadow: "rgba(0, 0, 0, 0.3)",
   },
   dark: {
     enabled: "#FFF",
     disabled: "#7A7B88",
     primary: "#FF0558",
-    bgPrimary: "#2B2D42",
+    bgPrimary: "#141414",
     bgSecondary: "#43455F",
     navColor: "rgba(0, 0, 0, 0.8)",
     borderColor: "#d2d2d2",
+    textShadow: "rgba(255, 5, 88, 0.3)",
   },
 };
 

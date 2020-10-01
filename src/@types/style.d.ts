@@ -6,4 +6,5 @@ export interface Theme {
   bgSecondary: string;
   navColor: string;
   borderColor: string;
+  textShadow: string;
 }
