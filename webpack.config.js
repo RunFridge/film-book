@@ -49,15 +49,6 @@ module.exports = (webpackEnv) => {
           },
         },
         {
-          test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-          loader: "url-loader",
-          options: {
-            limit: 10000,
-            outputPath: "static/media",
-            name: "[name].[hash:8].[ext]",
-          },
-        },
-        {
           test: /\.css$/,
           use: [MiniCssExtractPlugin.loader, "css-loader"],
         },
