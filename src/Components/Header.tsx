@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
-import { responsiveOn } from "../Styles/Responsive";
+import { device } from "../Styles/Responsive";
 
 // Hooks
 import useScreenSize from "../Hooks/useScreenSize";
@@ -31,7 +31,7 @@ const NavContainer = styled.header`
   background: ${({ theme }: { theme: Theme }): string => theme.navColor};
 
   /* Responsive Desktop */
-  ${responsiveOn.desktop} {
+  ${device.desktop} {
     /* Style */
     box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 0px 0px;
 
