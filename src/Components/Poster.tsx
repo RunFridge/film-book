@@ -1,12 +1,10 @@
 import React, { ReactElement } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { device } from "../Styles/Responsive";
 
 // Utils
 import { constructImageUri, posterSizes } from "../Utils";
-
-// File import
-import noPosterImg from "../Assets/noPosterSmall.png";
 
 // Type
 import { Theme } from "../@types/style";
@@ -37,10 +35,18 @@ const StyledLink = styled(Link)`
 
 const PosterImage = styled.img`
   /* Size */
-  width: 350px;
+  width: 180px;
 
   /* Box Style */
   border-radius: 1em;
+
+  /* Responsive */
+  ${device.desktop} {
+    width: 250px;
+  }
+  ${device.tablet} {
+    width: 200px;
+  }
 `;
 
 const Contents = styled.div`
@@ -48,9 +54,15 @@ const Contents = styled.div`
   font-size: 1em;
 `;
 
-const Title = styled.h3``;
+const Title = styled.h3`
+  /* Size */
+  margin-bottom: 0.25em;
+`;
 
 const ReleaseDate = styled.p`
+  /* Size */
+  margin-bottom: 0.25em;
+
   /* Font style */
   opacity: 0.8;
   font-size: 0.8em;
@@ -98,7 +110,7 @@ const Poster = ({
           src={
             posterSrc
               ? constructImageUri(posterSrc, posterSizes.w500)
-              : noPosterImg
+              : require("../Assets/noPosterSmall.png")
           }
         />
         <Contents>
