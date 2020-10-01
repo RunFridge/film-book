@@ -20,6 +20,9 @@ import { Theme } from "../@types/style";
 ==========================
 */
 const SliderWrapper = styled.div`
+  /* Position */
+  position: relative;
+
   /* Size */
   padding: 0 30px;
   &:not(:last-child) {
@@ -34,6 +37,42 @@ const SliderContainer = styled.div`
   /* Size */
   height: 100%;
   margin-top: 15px;
+
+  /* Gradient Slider */
+  &::before {
+    content: "";
+    /* Position */
+    position: absolute;
+    left: 0;
+    z-index: 5;
+    /* Size */
+    height: 100%;
+    width: 5%;
+
+    background: ${({ theme }: { theme: Theme }) => theme.bgPrimary};
+    background: linear-gradient(
+      90deg,
+      ${({ theme }: { theme: Theme }) => theme.bgPrimary} 10%,
+      transparent 100%
+    );
+  }
+  &::after {
+    content: "";
+    /* Position */
+    position: absolute;
+    right: 0;
+    z-index: 5;
+    /* Size */
+    height: 100%;
+    width: 5%;
+
+    background: ${({ theme }: { theme: Theme }) => theme.bgPrimary};
+    background: linear-gradient(
+      270deg,
+      ${({ theme }: { theme: Theme }) => theme.bgPrimary} 10%,
+      transparent 100%
+    );
+  }
 `;
 
 const SliderTitle = styled.h3`
@@ -41,7 +80,7 @@ const SliderTitle = styled.h3`
   font-size: 2em;
   font-weight: 700;
   border-bottom: 0.5px solid ${({ theme }: { theme: Theme }) => theme.disabled};
-  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 4px 3px ${({ theme }: { theme: Theme }) => theme.textShadow};
 
   /* Misc */
   user-select: none;
@@ -62,7 +101,6 @@ export const MovieSlider = ({
   // States
   const [width, _] = useScreenSize();
   const [slidesPerView, setSlidesPerView] = useState(6);
-  const [pause, setPause] = useState(false);
 
   // Responsive slider with screen size
   useEffect((): void => {
@@ -79,43 +117,11 @@ export const MovieSlider = ({
   }, [width]);
 
   // Keen Slider REF
-  const timer = useRef<number>();
-  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
     slidesPerView,
-    spacing: 5,
-    loop: true,
-    dragStart: () => {
-      setPause(true);
-    },
-    dragEnd: () => {
-      setPause(false);
-    },
+    centered: true,
+    initial: Math.floor(movies.length / 2),
   });
-
-  // Auto scrolling
-  useEffect(() => {
-    if (sliderRef.current !== null) {
-      // Stop autoscroll when mouseover
-      sliderRef.current.addEventListener("mouseover", () => {
-        setPause(true);
-      });
-      // Start autoscroll when mouseout
-      sliderRef.current.addEventListener("mouseout", () => {
-        setPause(false);
-      });
-    }
-  }, [sliderRef]);
-  useEffect(() => {
-    // Set autoscroll interval
-    timer.current = setInterval(() => {
-      if (!pause && slider) {
-        slider.next();
-      }
-    }, 5000);
-    return () => {
-      clearInterval(timer.current);
-    };
-  }, [pause, slider]);
 
   // React Element
   return (

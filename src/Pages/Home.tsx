@@ -52,6 +52,7 @@ const Container = styled.div`
   color: ${({ theme }: { theme: Theme }) => theme.enabled};
 
   /* Size */
+  padding-top: 60px;
   padding-bottom: 80px;
 `;
 

@@ -20,6 +20,7 @@ const FooterContainer = styled.footer`
   /* Position */
   position: fixed;
   bottom: 0;
+  z-index: 10;
 
   /* Size */
   width: 100%;

@@ -37,7 +37,6 @@ const NavContainer = styled.header`
 
     /* Size */
     height: 60px;
-    margin-bottom: 0.25em;
   }
 `;
 
