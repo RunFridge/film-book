@@ -7,7 +7,10 @@ const GlobalStyle = createGlobalStyle`
     };
 
     /* Import Font */
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+    @font-face {
+        font-family: Nato Sans KR;
+        src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+    }
 
     /* Global body style */
     body {
