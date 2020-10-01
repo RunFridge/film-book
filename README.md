@@ -73,6 +73,11 @@
    yarn start
    ```
 
+### Style Guide
+
+- 📱: Responsive style is designed from mobile to desktop
+  - Default is mobile and media queries for other devices
+
 ### Used libraries
 
 - [ReactJS](https://reactjs.org/)
