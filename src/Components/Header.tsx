@@ -24,9 +24,8 @@ const NavContainer = styled.header`
   /* Style */
   background: ${({ theme }: { theme: Theme }): string => theme.navColor};
 
-  /* Responsive */
+  /* Responsive Desktop */
   @media only screen and (min-width: 550px) {
-    /* Desktop / Tablet */
     /* Style */
     box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 0px 0px;
 

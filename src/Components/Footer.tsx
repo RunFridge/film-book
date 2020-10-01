@@ -37,6 +37,12 @@ const FooterContainer = styled.footer`
 
   /* Font */
   font-size: 1.2em;
+
+  /* Responsive Desktop */
+  @media only screen and (min-width: 550px) {
+    /* Position */
+    position: static;
+  }
 `;
 
 const MenuContainer = styled.ul`
