@@ -6,7 +6,7 @@ import styled from "styled-components";
 import useScreenSize from "../Hooks/useScreenSize";
 
 // Types
-import { MobileMenuItemType, Theme } from "../@types/style";
+import { Theme } from "../@types/style";
 
 /*
 ==========================
@@ -47,7 +47,7 @@ const MenuContainer = styled.ul`
   list-style-type: none;
 `;
 
-const MobileMenuItem = styled.li<MobileMenuItemType>`
+const MobileMenuItem = styled.li<{ current: boolean }>`
   /* Size */
   padding: 0 15px;
 

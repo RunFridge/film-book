@@ -7,11 +7,3 @@ export interface Theme {
   navColor: string;
   borderColor: string;
 }
-
-export type MobileMenuItemType = {
-  current: boolean;
-};
-
-export type MobileMenuFooterButtonType = {
-  icon: string;
-};

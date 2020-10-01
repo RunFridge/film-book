@@ -3,11 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 // Types
-import {
-  Theme,
-  MobileMenuItemType,
-  MobileMenuFooterButtonType,
-} from "../@types/style";
+import { Theme } from "../@types/style";
 
 /*
 ==========================
@@ -60,7 +56,7 @@ const MenuContainer = styled.ul`
   list-style-type: none;
 `;
 
-const MenuMobileButton = styled.li<MobileMenuItemType>`
+const MenuMobileButton = styled.li<{ current: boolean }>`
   /* Flexbox */
   display: flex;
   flex-direction: column;
@@ -73,7 +69,7 @@ const MenuMobileButton = styled.li<MobileMenuItemType>`
     current ? theme.enabled : theme.disabled};
 `;
 
-const StyledLink = styled(Link)<MobileMenuFooterButtonType>`
+const StyledLink = styled(Link)<{ icon: string }>`
   /* Gridbox */
   display: grid;
   place-items: center;
