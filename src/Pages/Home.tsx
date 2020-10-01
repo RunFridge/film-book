@@ -5,7 +5,7 @@ import { useQuery, gql } from "@apollo/client";
 // Components
 import Loading from "../Components/Loading";
 import Error from "../Components/Error";
-import { MovieSlider } from "../Components/Slider";
+import Slider from "../Components/Slider";
 
 // Types
 import { Theme } from "../@types/style";
@@ -72,9 +72,9 @@ const Home = (): ReactElement => {
       const { popularMovies, nowPlayingMovies, upcomingMovies } = data;
       return (
         <Container>
-          <MovieSlider movies={popularMovies} sliderTitle="인기 영화" />
-          <MovieSlider movies={nowPlayingMovies} sliderTitle="현재 상영 영화" />
-          <MovieSlider movies={upcomingMovies} sliderTitle="개봉 예정 영화" />
+          <Slider movies={popularMovies} sliderTitle="인기 영화" />
+          <Slider movies={nowPlayingMovies} sliderTitle="현재 상영 영화" />
+          <Slider movies={upcomingMovies} sliderTitle="개봉 예정 영화" />
         </Container>
       );
     }

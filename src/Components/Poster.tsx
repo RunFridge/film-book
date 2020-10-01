@@ -8,6 +8,7 @@ import { constructImageUri, posterSizes } from "../Utils";
 
 // Type
 import { Theme } from "../@types/style";
+import { NoUnusedFragmentsRule } from "graphql";
 
 /*
 ==========================
@@ -88,21 +89,30 @@ const Rating = styled.p`
 const Poster = ({
   id,
   title,
+  name,
   releaseDate,
+  firstAirDate,
   rating,
   posterSrc,
-  isMovie,
+  isMovie = false,
 }: {
   id: number;
-  title: string;
-  releaseDate: string;
+  title?: string;
+  name?: string;
+  releaseDate?: string;
+  firstAirDate?: string;
   rating: number;
   posterSrc: string | null;
-  isMovie: boolean;
+  isMovie?: boolean;
 }): ReactElement => {
-  if (title.length > 18) {
+  // Shorten name/title of the movie or show
+  if (title && title.length > 18) {
     title = title.slice(0, 15) + "...";
+  } else if (name && name.length > 18) {
+    name = name.slice(0, 15) + "...";
   }
+
+  // React Element
   return (
     <KeenSliderContainer className="keen-slider__slide">
       <StyledLink to={isMovie ? `/movie/${id}` : `/show/${id}`}>
@@ -114,8 +124,8 @@ const Poster = ({
           }
         />
         <Contents>
-          <Title>{title}</Title>
-          <ReleaseDate>{releaseDate}</ReleaseDate>
+          <Title>{isMovie ? title : name}</Title>
+          <ReleaseDate>{isMovie ? releaseDate : firstAirDate}</ReleaseDate>
           <Rating>{rating ? `${rating} / 10` : "No rating"}</Rating>
         </Contents>
       </StyledLink>

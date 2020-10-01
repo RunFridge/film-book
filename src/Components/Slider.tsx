@@ -10,7 +10,7 @@ import { size } from "../Styles/Responsive";
 import Poster from "./Poster";
 
 // Types
-import { Movie } from "../@types/graphqlTypes";
+import { Movie, Show } from "../@types/graphqlTypes";
 import useScreenSize from "../Hooks/useScreenSize";
 import { Theme } from "../@types/style";
 
@@ -91,16 +91,23 @@ const SliderTitle = styled.h3`
     React Element
 ==========================
 */
-export const MovieSlider = ({
+const Slider = ({
   movies,
+  shows,
   sliderTitle,
 }: {
-  movies: [Movie];
+  movies?: [Movie];
+  shows?: [Show];
   sliderTitle: string;
 }): ReactElement => {
   // States
   const [width, _] = useScreenSize();
-  const [slidesPerView, setSlidesPerView] = useState(6);
+  const [slidesPerView, setSlidesPerView] = useState(2);
+  const initialSlide = movies
+    ? Math.floor(movies.length / 2)
+    : shows
+    ? Math.floor(shows.length / 2)
+    : 0;
 
   // Responsive slider with screen size
   useEffect((): void => {
@@ -120,7 +127,7 @@ export const MovieSlider = ({
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     slidesPerView,
     centered: true,
-    initial: Math.floor(movies.length / 2),
+    initial: initialSlide,
   });
 
   // React Element
@@ -128,26 +135,48 @@ export const MovieSlider = ({
     <SliderWrapper>
       <SliderTitle>{sliderTitle}</SliderTitle>
       <SliderContainer ref={sliderRef} className="keen-slider">
-        {movies.map(
-          ({
-            id,
-            title,
-            release_date,
-            vote_average,
-            poster_path,
-          }): ReactElement => (
-            <Poster
-              key={id}
-              id={id}
-              title={title}
-              releaseDate={release_date}
-              rating={vote_average}
-              posterSrc={poster_path}
-              isMovie
-            />
-          )
-        )}
+        {movies &&
+          movies.map(
+            ({
+              id,
+              title,
+              release_date,
+              vote_average,
+              poster_path,
+            }): ReactElement => (
+              <Poster
+                key={id}
+                id={id}
+                title={title}
+                releaseDate={release_date}
+                rating={vote_average}
+                posterSrc={poster_path}
+                isMovie
+              />
+            )
+          )}
+        {shows &&
+          shows.map(
+            ({
+              id,
+              name,
+              first_air_date,
+              vote_average,
+              poster_path,
+            }): ReactElement => (
+              <Poster
+                key={id}
+                id={id}
+                name={name}
+                firstAirDate={first_air_date}
+                rating={vote_average}
+                posterSrc={poster_path}
+              />
+            )
+          )}
       </SliderContainer>
     </SliderWrapper>
   );
 };
+
+export default Slider;
