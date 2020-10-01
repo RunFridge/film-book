@@ -15,5 +15,5 @@ export const backdropSizes = {
   original: "original",
 };
 
-export const constructImageUri = (size: string): string => BASE_URL + size;
-
+export const constructImageUri = (posterPath: string, size: string): string =>
+  BASE_URL + size + `/${posterPath}`;
