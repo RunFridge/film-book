@@ -32,6 +32,13 @@ const StyledLink = styled(Link)`
   &::visited {
     color: inherit;
   }
+
+  /* Hover */
+  &:hover > img {
+    filter: drop-shadow(
+      2px 2px 10px ${({ theme }: { theme: Theme }): string => theme.textShadow}
+    );
+  }
 `;
 
 const PosterImage = styled.img`
@@ -52,7 +59,15 @@ const PosterImage = styled.img`
 
 const Contents = styled.div`
   /* Font Style */
-  font-size: 1em;
+  font-size: 0.7em;
+
+  /* Responsive */
+  ${device.desktop} {
+    font-size: 1em;
+  }
+  ${device.tablet} {
+    font-size: 0.8em;
+  }
 `;
 
 const Title = styled.h3`
