@@ -2688,6 +2688,11 @@ jsonfile@^4.0.0:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
+keen-slider@^5.2.3:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/keen-slider/-/keen-slider-5.2.3.tgz#cefbe8b93949f67a7e32914bb43275b9a301690d"
+  integrity sha512-aV41QXnzsdHmD1qWF/F7kTxcLwTdFHXLSSv7x3FLS7Y+yxoOKsHsFBmRz1a9TSZ8jTmLPerqJpsvsPL4NGUVmQ==
+
 killable@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"

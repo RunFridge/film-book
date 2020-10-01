@@ -79,6 +79,7 @@
 - [Styled-Components](https://styled-components.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Webpack](https://webpack.js.org/)
+- [Keen Slider](https://keen-slider.io/)
 
 ### Reference
 
