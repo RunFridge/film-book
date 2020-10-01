@@ -40,6 +40,7 @@ module.exports = (webpackEnv) => {
         },
         {
           loader: "file-loader",
+          test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
           exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
           options: {
             outputPath: "static/media",
