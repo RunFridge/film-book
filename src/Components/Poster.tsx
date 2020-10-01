@@ -8,6 +8,9 @@ import { constructImageUri, posterSizes } from "../Utils";
 // File import
 import noPosterImg from "../Assets/noPosterSmall.png";
 
+// Type
+import { Theme } from "../@types/style";
+
 /*
 ==========================
     Styled Components
@@ -48,11 +51,13 @@ const Contents = styled.div`
 const Title = styled.h3``;
 const Rating = styled.p`
   /* Font Style */
+  color: ${({ theme }: { theme: Theme }): string => theme.primary};
   /* Rating star */
   &::before {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f005";
+    margin-right: 5px;
   }
 `;
 
