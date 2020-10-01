@@ -23,7 +23,7 @@ export interface Movie {
   backdrop_path: string | null;
   title: string;
   overview: string | null;
-  relese_date: string;
+  release_date: string;
   runtime: number | null;
   vote_average: number;
   production_companies: Array<Company> | null;
