@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const path = require("path");
 const dotenv = require("dotenv");
@@ -55,6 +56,10 @@ module.exports = (webpackEnv) => {
             name: "[name].[hash:8].[ext]",
           },
         },
+        {
+          test: /\.css$/,
+          use: [MiniCssExtractPlugin.loader, "css-loader"],
+        },
       ],
     },
     resolve: {
@@ -63,6 +68,7 @@ module.exports = (webpackEnv) => {
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({ template: appHtml }),
+      new MiniCssExtractPlugin(),
       new webpack.DefinePlugin({
         "process.env": JSON.stringify(
           Object.assign({}, dotenv.config().parsed, { NODE_ENV: webpackEnv })
