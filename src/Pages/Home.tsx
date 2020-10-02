@@ -7,9 +7,6 @@ import Loading from "../Components/Loading";
 import Error from "../Components/Error";
 import Slider from "../Components/Slider";
 
-// Types
-import { Theme } from "../@types/style";
-
 /*
 ==========================
     GraphQL query

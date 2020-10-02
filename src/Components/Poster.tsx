@@ -8,8 +8,6 @@ import { constructImageUri, posterSizes, shortenLongText } from "../Utils";
 
 // Type
 import { Theme } from "../@types/style";
-import { NoUnusedFragmentsRule } from "graphql";
-import { NamedChunksPlugin } from "webpack";
 
 /*
 ==========================
