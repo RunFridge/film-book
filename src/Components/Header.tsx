@@ -57,6 +57,8 @@ const MenuContainer = styled.ul`
   list-style-type: none;
 
   ${device.desktop} {
+    /* Font Style */
+    font-size: 0.75em;
   }
 `;
 

@@ -58,6 +58,54 @@ const MenuContainer = styled.ul`
   list-style-type: none;
 `;
 
+const DesktopFooter = styled.div`
+  /* Display */
+  display: none;
+
+  /* Font Style */
+  color: ${({ theme }: { theme: Theme }) => theme.enabled};
+
+  /* Size */
+  padding: 15px 0;
+
+  /* Responsive */
+  ${device.desktop} {
+    /* Flexbox */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+const StyledAnchor = styled.a`
+  /* Link Style */
+  text-decoration: none;
+  color: inherit;
+  &::visited {
+    color: inherit;
+  }
+  outline: 0;
+
+  /* Size */
+  margin: 15px 0;
+`;
+
+const CopyRight = styled.p`
+  /* Font Style */
+  font-size: 0.7em;
+`;
+
+const GithubLogo = styled.div`
+  /* Rating star */
+  &::before {
+    font-family: "Font Awesome 5 Brands";
+    content: "\f09b";
+    color: ${({ theme }: { theme: Theme }) => theme.enabled};
+    font-size: 2em;
+  }
+`;
+
 const MenuMobileButton = styled.li<{ current: boolean }>`
   /* Flexbox */
   display: flex;
@@ -86,6 +134,11 @@ const StyledLink = styled(Link)<{ icon: string }>`
   &:visited {
     color: inherit;
   }
+
+  /* Responsive */
+  ${device.desktop} {
+    display: none;
+  }
 `;
 
 const FontAwesomeIcon = styled.i`
@@ -105,6 +158,20 @@ const Footer = withRouter(
   ({ location: { pathname } }): ReactElement => (
     <FooterContainer>
       <MenuContainer>
+        {/* This part only shows up on desktop */}
+        <DesktopFooter>
+          <StyledAnchor
+            href="https://github.com/RunFridge/film-book"
+            target="_blank"
+          >
+            <GithubLogo />
+          </StyledAnchor>
+          <CopyRight>
+            RunFridge &copy; FilmBook {new Date().getFullYear()}
+          </CopyRight>
+        </DesktopFooter>
+
+        {/* This part only shows up on mobile */}
         <StyledLink to="/" icon="movie">
           <MenuMobileButton
             current={pathname === "/" || pathname.includes("movie")}
