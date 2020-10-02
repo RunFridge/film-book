@@ -11,7 +11,11 @@ import { Theme } from "../@types/style";
 */
 const LoadingWrapper = styled.div`
   /* Size */
-  height: 85vh;
+  height: 100vh;
+
+  /* Style */
+  background: ${({ theme }: { theme: Theme }) => theme.bgPrimary};
+  color: ${({ theme }: { theme: Theme }) => theme.enabled};
 `;
 const Loader = styled.div`
   /* Flexbox */

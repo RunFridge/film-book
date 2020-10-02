@@ -1,16 +1,27 @@
 import React, { ReactElement } from "react";
 import styled from "styled-components";
 
+// Type
+import { Theme } from "../@types/style";
+
 const Container = styled.div`
-  /* Grixbox */
-  display: grid;
-  place-items: center;
+  /* Flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   /* Size */
-  padding: 5vh 50px;
+  height: 100vh;
+
+  /* Style */
+  background: ${({ theme }: { theme: Theme }) => theme.bgPrimary};
+  color: ${({ theme }: { theme: Theme }) => theme.enabled};
 
   /* Misc */
-  user-select: none;
+  & > img {
+    user-select: none;
+  }
 `;
 
 const ErrorTitle = styled.h1`
@@ -35,18 +46,19 @@ const ContactLink = styled.a`
   border-bottom: 1px solid;
 `;
 
-const Loading = (): ReactElement => (
+const Error = ({ message }: { message: string }): ReactElement => (
   <Container>
     <img
-      src="https://res.cloudinary.com/dgggcrkxq/image/upload/v1592437592/noticon/yucvpr6jzidhqlja5zxq.png"
+      src={require("../Assets/errorLogo.png")}
       alt="error-logo"
-      width="100px"
+      width="150px"
+      draggable={false}
     />
     <ErrorTitle>오류가 발생하였습니다!</ErrorTitle>
-    <h5></h5>
+    <h5>오류 메세지: {message}</h5>
     <ErrorContact>
       <small>
-        관리자에게{" "}
+        오류 메세지와 함께, 관리자에게{" "}
         <ContactLink
           href="https://github.com/RunFridge/film-book/issues"
           target="_blank"
@@ -59,4 +71,4 @@ const Loading = (): ReactElement => (
   </Container>
 );
 
-export default Loading;
+export default Error;

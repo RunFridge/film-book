@@ -67,7 +67,7 @@ const Shows = (): ReactElement => {
     return <Loading />;
   } else {
     if (error) {
-      return <Error />;
+      return <Error message={error.message} />;
     } else {
       const { popularShows, airingTodayShows, topRatedShows } = data;
       return (

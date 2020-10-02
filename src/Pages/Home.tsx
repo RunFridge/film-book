@@ -67,7 +67,7 @@ const Home = (): ReactElement => {
     return <Loading />;
   } else {
     if (error) {
-      return <Error />;
+      return <Error message={error.message} />;
     } else {
       const { popularMovies, nowPlayingMovies, upcomingMovies } = data;
       return (
