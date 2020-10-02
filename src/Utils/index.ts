@@ -1,3 +1,4 @@
+// The Movie Database Image URI generation
 const BASE_URL = "http://image.tmdb.org/t/p/";
 export const posterSizes = {
   w92: "w92",
@@ -14,6 +15,13 @@ export const backdropSizes = {
   w1280: "w1280",
   original: "original",
 };
-
 export const constructImageUri = (posterPath: string, size: string): string =>
   BASE_URL + size + `/${posterPath}`;
+
+// Shorten long string
+export const shortenLongText = (limit: number, originStr: string): string => {
+  if (originStr.length >= limit) {
+    return originStr.slice(0, limit - 3) + "...";
+  }
+  return originStr;
+};

@@ -4,11 +4,12 @@ import styled from "styled-components";
 import { device } from "../Styles/Responsive";
 
 // Utils
-import { constructImageUri, posterSizes } from "../Utils";
+import { constructImageUri, posterSizes, shortenLongText } from "../Utils";
 
 // Type
 import { Theme } from "../@types/style";
 import { NoUnusedFragmentsRule } from "graphql";
+import { NamedChunksPlugin } from "webpack";
 
 /*
 ==========================
@@ -117,10 +118,10 @@ const Poster = ({
   isMovie?: boolean;
 }): ReactElement => {
   // Shorten name/title of the movie or show
-  if (title && title.length >= 15) {
-    title = title.slice(0, 12) + "...";
-  } else if (name && name.length > 15) {
-    name = name.slice(0, 12) + "...";
+  if (title) {
+    title = shortenLongText(15, title);
+  } else if (name) {
+    name = shortenLongText(15, name);
   }
 
   // React Element
