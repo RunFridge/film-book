@@ -188,9 +188,9 @@ const Footer = withRouter(
             <span>TV</span>
           </MenuMobileButton>
         </StyledLink>
-        <StyledLink to="/search" icon="search">
+        <StyledLink to="/mobile-search" icon="search">
           <MenuMobileButton
-            current={pathname === "/search" || pathname === "/results"}
+            current={pathname === "/mobile-search" || pathname === "/results"}
           >
             <FontAwesomeIcon className="fas fa-search" />
             <span>검색</span>

@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
+import { size } from "../Styles/Responsive";
 
-export default (): [number, number] => {
+const useScreenSize = (): [number, number] => {
   /*
     Updates screen width and height as it resizes
     returns [Width, height]
@@ -18,4 +19,17 @@ export default (): [number, number] => {
   });
 
   return [width, height];
+};
+
+export default useScreenSize;
+
+export const isMobile = (): boolean => {
+  /* R
+    Retrun true if screen is mobile
+  */
+  const [width, _] = useScreenSize();
+  if (width <= size.maxPhone) {
+    return true;
+  }
+  return false;
 };

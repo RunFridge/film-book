@@ -4,13 +4,14 @@ import styled from "styled-components";
 import { device } from "../Styles/Responsive";
 
 // Hooks
-import useScreenSize from "../Hooks/useScreenSize";
+import { isMobile } from "../Hooks/useScreenSize";
 
 // Types
 import { Theme } from "../@types/style";
 
 // Components
 import SearchBar from "../Components/SearchBar";
+import MobileSearchBar from "./MobileSearchBar";
 
 /*
 ==========================
@@ -114,7 +115,13 @@ const StyledLink = styled(Link)`
 */
 const Header = withRouter(
   ({ location: { pathname } }): ReactElement => {
-    const [width, height] = useScreenSize();
+    if (pathname === "/mobile-search" && isMobile()) {
+      return (
+        <NavContainer>
+          <MobileSearchBar />
+        </NavContainer>
+      );
+    }
     return (
       <NavContainer>
         <Link to="/">

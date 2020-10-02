@@ -3,10 +3,13 @@ import styled from "styled-components";
 import { Switch, Route } from "react-router-dom";
 import { device } from "../Styles/Responsive";
 
+// Hooks
+import { isMobile } from "../Hooks/useScreenSize";
+
 // Page components
 import Home from "../Pages/Home";
 import Shows from "../Pages/Shows";
-import Search from "../Pages/Search";
+import MobileSearch from "../Pages/MobileSearch";
 import Results from "../Pages/Results";
 import MovieDetail from "../Pages/MovieDetail";
 import ShowDetail from "../Pages/ShowDetail";
@@ -42,29 +45,34 @@ const MainContainer = styled.div`
     React Element
 ==========================
 */
-const Router = (): ReactElement => (
-  <MainContainer>
-    <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/shows" exact component={Shows} />
-      <Route path="/search" component={Search} />
-      <Route path="/results" component={Results} />
-      <Route path="/movie/:id" component={MovieDetail} />
-      <Route path="/show/:id" exact component={ShowDetail} />
-      <Route
-        path="/show/:id/season/:seasonNumber"
-        exact
-        component={SeasonDetail}
-      />
-      <Route
-        path="/show/:id/season/:seasonNumber/episode/:episodeNumber"
-        component={EpisodeDetail}
-      />
-      <Route path="/person/:id" component={PersonDetail} />
-      <Route path="/settings" component={Settings} />
-      <Route component={Page404} />
-    </Switch>
-  </MainContainer>
-);
+const Router = (): ReactElement => {
+  return (
+    <MainContainer>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/shows" exact component={Shows} />
+        <Route
+          path="/mobile-search"
+          component={isMobile() ? MobileSearch : Page404}
+        />
+        <Route path="/results" component={Results} />
+        <Route path="/movie/:id" component={MovieDetail} />
+        <Route path="/show/:id" exact component={ShowDetail} />
+        <Route
+          path="/show/:id/season/:seasonNumber"
+          exact
+          component={SeasonDetail}
+        />
+        <Route
+          path="/show/:id/season/:seasonNumber/episode/:episodeNumber"
+          component={EpisodeDetail}
+        />
+        <Route path="/person/:id" component={PersonDetail} />
+        <Route path="/settings" component={Settings} />
+        <Route component={Page404} />
+      </Switch>
+    </MainContainer>
+  );
+};
 
 export default Router;
