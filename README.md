@@ -19,13 +19,13 @@
 - Routers
 
   - [x] Movies `/`
-    - [ ] Now playing movies
-    - [ ] Upcoming movies
-    - [ ] Popular movies
+    - [x] Now playing movies
+    - [x] Upcoming movies
+    - [x] Popular movies
   - [x] Shows `/shows`
-    - [ ] Airing today shows
-    - [ ] Popular shows
-    - [ ] Top Rated shows
+    - [x] Airing today shows
+    - [x] Popular shows
+    - [x] Top Rated shows
   - [x] Search Results `/results`
     - [ ] Movie search results
     - [ ] Show search results
@@ -46,12 +46,12 @@
 - Components
 
   - [x] Header / Navbar
-    - [ ] Menu navigations
+    - [x] Menu navigations
     - [ ] Search input
-  - [ ] Main
+  - [x] Main
   - [x] Footer
-    - [ ] Copyright
-    - [ ] Github link
+    - [x] Copyright
+    - [x] Github link
 
 - Goals for version 2.0
 
