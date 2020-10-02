@@ -9,6 +9,9 @@ import useScreenSize from "../Hooks/useScreenSize";
 // Types
 import { Theme } from "../@types/style";
 
+// Components
+import SearchBar from "../Components/SearchBar";
+
 /*
 ==========================
     Styled Components
@@ -37,6 +40,7 @@ const NavContainer = styled.header`
 
     /* Size */
     height: 60px;
+    padding: 0 60px;
   }
 `;
 
@@ -51,6 +55,21 @@ const MenuContainer = styled.ul`
 
   /* List style */
   list-style-type: none;
+
+  ${device.desktop} {
+  }
+`;
+
+const Logo = styled.img`
+  /* Display */
+  display: none;
+
+  /* Size */
+  height: 55px;
+
+  ${device.desktop} {
+    display: block;
+  }
 `;
 
 const MobileMenuItem = styled.li<{ current: boolean }>`
@@ -72,6 +91,9 @@ const MobileMenuItem = styled.li<{ current: boolean }>`
     background: rgb(209, 209, 210);
     width: 1px;
     height: 13px;
+    ${device.desktop} {
+      display: none;
+    }
   }
 `;
 
@@ -93,6 +115,9 @@ const Header = withRouter(
     const [width, height] = useScreenSize();
     return (
       <NavContainer>
+        <Link to="/">
+          <Logo src={require("../Assets/logo.png")} />
+        </Link>
         <MenuContainer>
           <MobileMenuItem
             current={pathname === "/" || pathname.includes("movie")}
@@ -108,6 +133,7 @@ const Header = withRouter(
             <StyledLink to="/settings">설정</StyledLink>
           </MobileMenuItem>
         </MenuContainer>
+        <SearchBar />
       </NavContainer>
     );
   }
