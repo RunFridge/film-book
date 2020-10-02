@@ -43,21 +43,6 @@ const SHOWS_QUERY = gql`
 
 /*
 ==========================
-    Styled Components
-==========================
-*/
-const Container = styled.div`
-  /* Style */
-  background: ${({ theme }: { theme: Theme }) => theme.bgPrimary};
-  color: ${({ theme }: { theme: Theme }) => theme.enabled};
-
-  /* Size */
-  padding-top: 60px;
-  padding-bottom: 80px;
-`;
-
-/*
-==========================
     React Element
 ==========================
 */
@@ -71,11 +56,11 @@ const Shows = (): ReactElement => {
     } else {
       const { popularShows, airingTodayShows, topRatedShows } = data;
       return (
-        <Container>
+        <>
           <Slider shows={popularShows} sliderTitle="인기 프로그램" />
           <Slider shows={airingTodayShows} sliderTitle="실시간 프로그램" />
           <Slider shows={topRatedShows} sliderTitle="최고 평점 프로그램" />
-        </Container>
+        </>
       );
     }
   }

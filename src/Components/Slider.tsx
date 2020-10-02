@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { device } from "../Styles/Responsive";
 
 // Keen Slider
 import { useKeenSlider } from "keen-slider/react";
@@ -27,6 +28,11 @@ const SliderWrapper = styled.div`
   padding: 0 30px;
   &:not(:last-child) {
     margin-bottom: 5px;
+  }
+
+  /* Responsive */
+  ${device.desktop} {
+    padding: 30px;
   }
 `;
 

@@ -43,20 +43,6 @@ const HOME_QUERY = gql`
 
 /*
 ==========================
-    Styled Components
-==========================
-*/
-const Container = styled.div`
-  /* Style */
-  background: ${({ theme }: { theme: Theme }) => theme.bgPrimary};
-  color: ${({ theme }: { theme: Theme }) => theme.enabled};
-
-  /* Size */
-  padding-bottom: 80px;
-`;
-
-/*
-==========================
     React Element
 ==========================
 */
@@ -70,11 +56,11 @@ const Home = (): ReactElement => {
     } else {
       const { popularMovies, nowPlayingMovies, upcomingMovies } = data;
       return (
-        <Container>
+        <>
           <Slider movies={popularMovies} sliderTitle="인기 영화" />
           <Slider movies={nowPlayingMovies} sliderTitle="현재 상영 영화" />
           <Slider movies={upcomingMovies} sliderTitle="개봉 예정 영화" />
-        </Container>
+        </>
       );
     }
   }

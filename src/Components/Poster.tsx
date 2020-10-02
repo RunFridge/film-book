@@ -27,6 +27,7 @@ const StyledLink = styled(Link)`
   &::visited {
     color: inherit;
   }
+  outline: 0;
 
   /* Hover */
   &:hover > img {

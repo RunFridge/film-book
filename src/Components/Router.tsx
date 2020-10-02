@@ -16,12 +16,22 @@ import PersonDetail from "../Pages/PersonDetail";
 import Page404 from "../Pages/Page404";
 import Settings from "../Pages/Settings";
 
+// Type
+import { Theme } from "../@types/style";
+
 /*
 ==========================
     Styled Components
 ==========================
 */
 const MainContainer = styled.div`
+  /* Style */
+  background: ${({ theme }: { theme: Theme }) => theme.bgPrimary};
+  color: ${({ theme }: { theme: Theme }) => theme.enabled};
+
+  /* Size */
+  padding-bottom: 80px;
+
   ${device.desktop} {
     padding: 0 60px;
   }
