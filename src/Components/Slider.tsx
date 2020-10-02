@@ -128,6 +128,7 @@ const Slider = ({
     slidesPerView,
     centered: true,
     initial: initialSlide,
+    slides: ".slide",
   });
 
   // React Element

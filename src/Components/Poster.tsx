@@ -15,17 +15,12 @@ import { NoUnusedFragmentsRule } from "graphql";
     Styled Components
 ==========================
 */
-const KeenSliderContainer = styled.div`
-  /* Size */
-  height: 100%;
-
+const StyledLink = styled(Link)`
   /* Display */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-`;
 
-const StyledLink = styled(Link)`
   /* Link Style */
   text-decoration: none;
   color: inherit;
@@ -43,17 +38,17 @@ const StyledLink = styled(Link)`
 
 const PosterImage = styled.img`
   /* Size */
-  width: 180px;
+  width: 150px;
 
   /* Box Style */
   border-radius: 1em;
 
   /* Responsive */
   ${device.desktop} {
-    width: 250px;
+    width: 220px;
   }
   ${device.tablet} {
-    width: 200px;
+    width: 160px;
   }
 `;
 
@@ -81,12 +76,12 @@ const ReleaseDate = styled.p`
 
   /* Font style */
   opacity: 0.8;
-  font-size: 0.8em;
 `;
 
 const Rating = styled.p`
   /* Font Style */
   color: ${({ theme }: { theme: Theme }): string => theme.primary};
+
   /* Rating star */
   &::before {
     font-family: "Font Awesome 5 Free";
@@ -121,30 +116,28 @@ const Poster = ({
   isMovie?: boolean;
 }): ReactElement => {
   // Shorten name/title of the movie or show
-  if (title && title.length > 18) {
-    title = title.slice(0, 15) + "...";
-  } else if (name && name.length > 18) {
-    name = name.slice(0, 15) + "...";
+  if (title && title.length >= 15) {
+    title = title.slice(0, 12) + "...";
+  } else if (name && name.length > 15) {
+    name = name.slice(0, 12) + "...";
   }
 
   // React Element
   return (
-    <KeenSliderContainer className="keen-slider__slide">
-      <StyledLink to={isMovie ? `/movie/${id}` : `/show/${id}`}>
-        <PosterImage
-          src={
-            posterSrc
-              ? constructImageUri(posterSrc, posterSizes.w500)
-              : require("../Assets/noPosterSmall.png")
-          }
-        />
-        <Contents>
-          <Title>{isMovie ? title : name}</Title>
-          <ReleaseDate>{isMovie ? releaseDate : firstAirDate}</ReleaseDate>
-          <Rating>{rating ? `${rating} / 10` : "No rating"}</Rating>
-        </Contents>
-      </StyledLink>
-    </KeenSliderContainer>
+    <StyledLink to={isMovie ? `/movie/${id}` : `/show/${id}`} className="slide">
+      <PosterImage
+        src={
+          posterSrc
+            ? constructImageUri(posterSrc, posterSizes.w500)
+            : require("../Assets/noPosterSmall.png")
+        }
+      />
+      <Contents>
+        <Title>{isMovie ? title : name}</Title>
+        <ReleaseDate>{isMovie ? releaseDate : firstAirDate}</ReleaseDate>
+        <Rating>{rating ? `${rating} / 10` : "No rating"}</Rating>
+      </Contents>
+    </StyledLink>
   );
 };
 
