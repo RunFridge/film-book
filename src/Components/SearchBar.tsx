@@ -1,5 +1,6 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 import { device } from "../Styles/Responsive";
 
 // Type
@@ -53,13 +54,37 @@ const Input = styled.input`
     React Element
 ==========================
 */
-const SearchBar = (): ReactElement => {
-  return (
-    <Form onSubmit={(e) => e.preventDefault()}>
-      <FontAwesomeIcon className="fas fa-search" />
-      <Input type="text" placeholder="작품 제목,배우,감독을 검색해보세요." />
-    </Form>
-  );
-};
+const SearchBar = withRouter(
+  ({ history }): ReactElement => {
+    const [term, setTerm] = useState("");
+
+    // Event callbacks
+    const handleSearchInput = (event: any) => {
+      setTerm(event.target.value);
+    };
+
+    const handleSubmit = (event: any) => {
+      event.preventDefault();
+      history.replace({
+        pathname: "/results",
+        state: {
+          term,
+        },
+      });
+    };
+
+    return (
+      <Form onSubmit={handleSubmit}>
+        <FontAwesomeIcon className="fas fa-search" />
+        <Input
+          type="text"
+          placeholder="작품 제목,배우,감독을 검색해보세요."
+          onChange={handleSearchInput}
+          required
+        />
+      </Form>
+    );
+  }
+);
 
 export default SearchBar;
