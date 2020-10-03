@@ -27,9 +27,9 @@
     - [x] Popular shows
     - [x] Top Rated shows
   - [x] Search Results `/results`
-    - [ ] Movie search results
-    - [ ] Show search results
-    - [ ] Person search results
+    - [x] Movie search results
+    - [x] Show search results
+    - [x] Person search results
   - [x] Movie details `/movie/:id`
     - [ ] Similar movies
     - [ ] Cast / Crew
@@ -47,7 +47,7 @@
 
   - [x] Header / Navbar
     - [x] Menu navigations
-    - [ ] Search input
+    - [x] Search input
   - [x] Main
   - [x] Footer
     - [x] Copyright

@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import styled from "styled-components";
 import { withRouter, useLocation } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 
@@ -37,6 +38,16 @@ const SEARCH_QUERY = gql`
 
 /*
 ==========================
+    Styled Component
+==========================
+*/
+const Info = styled.h3`
+  /* Size */
+  padding: 30px;
+`;
+
+/*
+==========================
     React Component
 ==========================
 */
@@ -59,7 +70,17 @@ const Results = withRouter(
           return (
             <>
               <Slider movies={searchMovie} sliderTitle="영화 검색 결과" />
+              {searchMovie.length === 0 ? (
+                <Info>😥 검색 결과가 없습니다.</Info>
+              ) : null}
               <Slider shows={searchShow} sliderTitle="프로그램 검색 결과" />
+              {searchShow.length === 0 ? (
+                <Info>😥 검색 결과가 없습니다.</Info>
+              ) : null}
+              <Slider people={searchPerson} sliderTitle="인물 검색 결과" />
+              {searchPerson.length === 0 ? (
+                <Info>😥 검색 결과가 없습니다.</Info>
+              ) : null}
             </>
           );
         }

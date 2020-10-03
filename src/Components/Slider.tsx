@@ -11,7 +11,7 @@ import { size } from "../Styles/Responsive";
 import Poster from "./Poster";
 
 // Types
-import { Movie, Show } from "../@types/graphqlTypes";
+import { Movie, Person, Show } from "../@types/graphqlTypes";
 import useScreenSize from "../Hooks/useScreenSize";
 import { Theme } from "../@types/style";
 
@@ -36,7 +36,7 @@ const SliderWrapper = styled.div`
   }
 `;
 
-const SliderContainer = styled.div`
+const SliderContainer = styled.div<{ posterCount: number }>`
   /* Display */
   display: flex;
 
@@ -46,6 +46,9 @@ const SliderContainer = styled.div`
 
   /* Gradient Slider */
   &::before {
+    /* Display */
+    display: ${({ posterCount }) => (posterCount <= 2 ? "none" : "block")};
+
     content: "";
     /* Position */
     position: absolute;
@@ -63,6 +66,9 @@ const SliderContainer = styled.div`
     );
   }
   &::after {
+    /* Display */
+    display: ${({ posterCount }) => (posterCount <= 2 ? "none" : "block")};
+
     content: "";
     /* Position */
     position: absolute;
@@ -100,10 +106,12 @@ const SliderTitle = styled.h3`
 const Slider = ({
   movies,
   shows,
+  people,
   sliderTitle,
 }: {
   movies?: [Movie];
   shows?: [Show];
+  people?: [Person];
   sliderTitle: string;
 }): ReactElement => {
   // States
@@ -113,6 +121,8 @@ const Slider = ({
     ? Math.floor(movies.length / 2)
     : shows
     ? Math.floor(shows.length / 2)
+    : people
+    ? Math.floor(people.length / 2)
     : 0;
 
   // Responsive slider with screen size
@@ -141,7 +151,19 @@ const Slider = ({
   return (
     <SliderWrapper>
       <SliderTitle>{sliderTitle}</SliderTitle>
-      <SliderContainer ref={sliderRef} className="keen-slider">
+      <SliderContainer
+        ref={sliderRef}
+        className="keen-slider"
+        posterCount={
+          movies
+            ? movies.length
+            : shows
+            ? shows.length
+            : people
+            ? people.length
+            : 5
+        }
+      >
         {movies &&
           movies.map(
             ({
@@ -178,6 +200,18 @@ const Slider = ({
                 firstAirDate={first_air_date}
                 rating={vote_average}
                 posterSrc={poster_path}
+              />
+            )
+          )}
+        {people &&
+          people.map(
+            ({ id, name, profile_path }): ReactElement => (
+              <Poster
+                key={id}
+                id={id}
+                name={name}
+                posterSrc={profile_path}
+                isPerson
               />
             )
           )}

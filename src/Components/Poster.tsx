@@ -105,15 +105,17 @@ const Poster = ({
   rating,
   posterSrc,
   isMovie = false,
+  isPerson = false,
 }: {
   id: number;
   title?: string;
   name?: string;
   releaseDate?: string;
   firstAirDate?: string;
-  rating: number;
+  rating?: number;
   posterSrc: string | null;
   isMovie?: boolean;
+  isPerson?: boolean;
 }): ReactElement => {
   // Shorten name/title of the movie or show
   if (title) {
@@ -124,7 +126,10 @@ const Poster = ({
 
   // React Element
   return (
-    <StyledLink to={isMovie ? `/movie/${id}` : `/show/${id}`} className="slide">
+    <StyledLink
+      to={isPerson ? `/person/${id}` : isMovie ? `/movie/${id}` : `/show/${id}`}
+      className="slide"
+    >
       <PosterImage
         src={
           posterSrc
@@ -134,8 +139,12 @@ const Poster = ({
       />
       <Contents>
         <Title>{isMovie ? title : name}</Title>
-        <ReleaseDate>{isMovie ? releaseDate : firstAirDate}</ReleaseDate>
-        <Rating>{rating ? `${rating} / 10` : "No rating"}</Rating>
+        <ReleaseDate>
+          {isPerson ? null : isMovie ? releaseDate : firstAirDate}
+        </ReleaseDate>
+        {isPerson ? null : (
+          <Rating>{rating ? `${rating} / 10` : "No rating"}</Rating>
+        )}
       </Contents>
     </StyledLink>
   );
