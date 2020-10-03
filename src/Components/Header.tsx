@@ -106,6 +106,7 @@ const StyledLink = styled(Link)`
   &:visited {
     color: inherit;
   }
+  outline: 0;
 `;
 
 /*
@@ -124,9 +125,9 @@ const Header = withRouter(
     }
     return (
       <NavContainer>
-        <Link to="/">
+        <StyledLink to="/">
           <Logo src={require("../Assets/logo.png")} />
-        </Link>
+        </StyledLink>
         <MenuContainer>
           <MobileMenuItem
             current={pathname === "/" || pathname.includes("movie")}
