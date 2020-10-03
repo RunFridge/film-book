@@ -117,13 +117,14 @@ const Slider = ({
   // States
   const [width, _] = useScreenSize();
   const [slidesPerView, setSlidesPerView] = useState(2);
-  const initialSlide = movies
-    ? Math.floor(movies.length / 2)
+  const posterLength = movies
+    ? movies.length
     : shows
-    ? Math.floor(shows.length / 2)
+    ? shows.length
     : people
-    ? Math.floor(people.length / 2)
+    ? people.length
     : 0;
+  const initialSlide = posterLength <= 2 ? 0 : Math.floor(posterLength / 2);
 
   // Responsive slider with screen size
   useEffect((): void => {
