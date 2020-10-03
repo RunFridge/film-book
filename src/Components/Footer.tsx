@@ -40,6 +40,8 @@ const FooterContainer = styled.footer`
   ${device.desktop} {
     /* Position */
     position: static;
+    /* Size */
+    padding: 30px 0;
   }
 `;
 
