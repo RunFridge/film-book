@@ -36,8 +36,8 @@
   - [x] Show details `/show/:id`
     - [ ] Similar shows
     - [ ] Cast / Crew
-    - [x] Season details `/show/:id/season/:seasonNumber`
-    - [x] Episode details `/show/:id/season/:seasonNumber/episode/:episodeNumber`
+    - [ ] Season details `/show/:id/season/:seasonNumber`
+    - [ ] Episode details `/show/:id/season/:seasonNumber/episode/:episodeNumber`
   - [x] Person details `/person/:id`
     - [ ] Cast / Crew
   - [x] Settings `/settings`
