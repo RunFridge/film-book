@@ -53,7 +53,7 @@ const Router = (): ReactElement => {
         <Route path="/shows" exact component={Shows} />
         <Route
           path="/mobile-search"
-          component={isMobile() ? MobileSearch : Page404}
+          component={isMobile() ? MobileSearch : Home}
         />
         <Route path="/results" component={Results} />
         <Route path="/movie/:id" component={MovieDetail} />
