@@ -1,16 +1,22 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import { ThemeProvider } from "styled-components";
-import Theme from "./Styles/Theme";
+import theme from "./Styles/Theme";
+
+// Components
 import Footer from "./Components/Footer";
 import Router from "./Components/Router";
 import Header from "./Components/Header";
 import GlobalStyle from "./Styles/GlobalStyle";
 
+// Hooks
+import useThemeSwitcher from "./Hooks/useThemeSwitcher";
+
 const App = (): ReactElement => {
+  const { themeString } = useThemeSwitcher();
+
   return (
     <>
-      {/* For now, theme is set for light mode */}
-      <ThemeProvider theme={Theme.light}>
+      <ThemeProvider theme={theme[themeString]}>
         <GlobalStyle />
         <Header />
         <Router />

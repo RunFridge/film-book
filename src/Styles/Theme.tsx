@@ -1,6 +1,6 @@
 import { Theme } from "../@types/style";
 
-const theme: { light: Theme; dark: Theme } = {
+const theme: { [index: string]: any; light: Theme; dark: Theme } = {
   light: {
     enabled: "#292A32",
     disabled: "#A5A5AA",
