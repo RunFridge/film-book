@@ -42,6 +42,9 @@ const Input = styled.input`
   padding: 0 15px;
   width: 20vw;
 
+  /* Style */
+  color: ${({ theme }: { theme: Theme }) => theme.enabled};
+
   /* Placeholder */
   ::placeholder {
     font-size: 0.8em;

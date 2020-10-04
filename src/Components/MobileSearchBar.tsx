@@ -40,6 +40,7 @@ const Input = styled.input`
   padding: 0 15px;
   height: 100%;
   width: 90%;
+  color: ${({ theme }: { theme: Theme }) => theme.enabled};
 
   /* Font Style */
   font-size: 1.1em;
