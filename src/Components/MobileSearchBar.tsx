@@ -2,7 +2,6 @@ import React, { ReactElement, useState } from "react";
 import styled from "styled-components";
 
 // Type
-import { History } from "history";
 import { Theme } from "../@types/style";
 import { withRouter } from "react-router-dom";
 
