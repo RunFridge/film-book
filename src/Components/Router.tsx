@@ -28,8 +28,11 @@ import { Theme } from "../@types/style";
 ==========================
 */
 const MainContainer = styled.div`
+  /* Position */
+  position: relative;
+
   /* Style */
-  background: ${({ theme }: { theme: Theme }) => theme.bgPrimary};
+  background: transparent;
   color: ${({ theme }: { theme: Theme }) => theme.enabled};
 
   /* Size */

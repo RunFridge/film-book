@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { Theme } from "../@types/style";
 
 const GlobalStyle = createGlobalStyle`
     /* Reset Margins */
@@ -14,7 +15,8 @@ const GlobalStyle = createGlobalStyle`
 
     /* Global body style */
     body {
-        font-family: "Noto Sans KR", sans-serif;;
+        font-family: "Noto Sans KR", sans-serif;
+        background: ${({ theme }: { theme: Theme }) => theme.bgPrimary}
     }
 `;
 
