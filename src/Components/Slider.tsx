@@ -29,6 +29,9 @@ const SliderWrapper = styled.div`
   &:not(:last-child) {
     margin-bottom: 5px;
   }
+  &:last-child {
+    padding-bottom: 15px;
+  }
 
   /* Responsive */
   ${device.desktop} {
@@ -93,9 +96,6 @@ const SliderTitle = styled.h3`
   font-weight: 700;
   border-bottom: 0.5px solid ${({ theme }: { theme: Theme }) => theme.disabled};
   text-shadow: 2px 4px 3px ${({ theme }: { theme: Theme }) => theme.textShadow};
-
-  /* Misc */
-  user-select: none;
 `;
 
 /*
