@@ -11,7 +11,7 @@ import { Theme } from "../@types/style";
 */
 const LoadingWrapper = styled.div`
   /* Size */
-  height: 100vh;
+  height: calc(100vh - 160px);
 
   /* Style */
   background: ${({ theme }: { theme: Theme }) => theme.bgPrimary};
