@@ -70,7 +70,7 @@ const Title = styled.h3`
   margin-bottom: 0.25em;
 `;
 
-const ReleaseDate = styled.p`
+const SubInfo = styled.p`
   /* Size */
   margin-bottom: 0.25em;
 
@@ -135,6 +135,20 @@ const Poster = ({
     department = shortenLongText(15, department);
   }
 
+  // Get sub information
+  let subInfo: string | undefined;
+  if (isPerson) {
+    if (character) {
+      subInfo = character;
+    } else if (department) {
+      subInfo = department;
+    }
+  } else if (isMovie) {
+    subInfo = releaseDate;
+  } else if (firstAirDate) {
+    subInfo = firstAirDate;
+  }
+
   // React Element
   return (
     <StyledLink
@@ -150,17 +164,7 @@ const Poster = ({
       />
       <Contents>
         <Title>{isMovie ? title : name}</Title>
-        <ReleaseDate>
-          {isPerson
-            ? character
-              ? character
-              : department
-              ? department
-              : null
-            : isMovie
-            ? releaseDate
-            : firstAirDate}
-        </ReleaseDate>
+        {subInfo && <SubInfo>{subInfo}</SubInfo>}
         {isPerson ? null : (
           <Rating>{rating ? `${rating} / 10` : "No rating"}</Rating>
         )}
