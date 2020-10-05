@@ -100,6 +100,8 @@ export interface Person {
   cast: Array<Cast> | null;
   crew: Array<Crew> | null;
   movie_credits: MovieCredits | null;
+  character: string | undefined;
+  department: string | undefined;
 }
 
 export interface MovieCredits {

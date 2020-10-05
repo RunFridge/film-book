@@ -106,6 +106,8 @@ const Poster = ({
   posterSrc,
   isMovie = false,
   isPerson = false,
+  character,
+  department,
 }: {
   id: number;
   title?: string;
@@ -116,6 +118,8 @@ const Poster = ({
   posterSrc: string | null;
   isMovie?: boolean;
   isPerson?: boolean;
+  character?: string;
+  department?: string;
 }): ReactElement => {
   // Shorten name/title of the movie or show
   if (title) {
@@ -140,7 +144,15 @@ const Poster = ({
       <Contents>
         <Title>{isMovie ? title : name}</Title>
         <ReleaseDate>
-          {isPerson ? null : isMovie ? releaseDate : firstAirDate}
+          {isPerson
+            ? character
+              ? character
+              : department
+              ? department
+              : null
+            : isMovie
+            ? releaseDate
+            : firstAirDate}
         </ReleaseDate>
         {isPerson ? null : (
           <Rating>{rating ? `${rating} / 10` : "No rating"}</Rating>

@@ -123,15 +123,12 @@ const Slider = ({
         ) : null}
         {movies &&
           movies.map(
-            ({
-              id,
-              title,
-              release_date,
-              vote_average,
-              poster_path,
-            }): ReactElement => (
+            (
+              { id, title, release_date, vote_average, poster_path },
+              idx
+            ): ReactElement => (
               <Poster
-                key={id}
+                key={idx}
                 id={id}
                 title={title}
                 releaseDate={release_date}
@@ -143,15 +140,12 @@ const Slider = ({
           )}
         {shows &&
           shows.map(
-            ({
-              id,
-              name,
-              first_air_date,
-              vote_average,
-              poster_path,
-            }): ReactElement => (
+            (
+              { id, name, first_air_date, vote_average, poster_path },
+              idx
+            ): ReactElement => (
               <Poster
-                key={id}
+                key={idx}
                 id={id}
                 name={name}
                 firstAirDate={first_air_date}
@@ -162,12 +156,17 @@ const Slider = ({
           )}
         {people &&
           people.map(
-            ({ id, name, profile_path }): ReactElement => (
+            (
+              { id, name, profile_path, character, department },
+              idx
+            ): ReactElement => (
               <Poster
-                key={id}
+                key={idx}
                 id={id}
                 name={name}
                 posterSrc={profile_path}
+                character={character}
+                department={department}
                 isPerson
               />
             )
