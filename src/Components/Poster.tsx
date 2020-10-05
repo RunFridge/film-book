@@ -38,30 +38,30 @@ const StyledLink = styled(Link)`
 
 const PosterImage = styled.img`
   /* Size */
-  width: 150px;
+  width: 40vw;
 
   /* Box Style */
   border-radius: 1em;
 
   /* Responsive */
   ${device.desktop} {
-    width: 220px;
+    width: 14vw;
   }
   ${device.tablet} {
-    width: 160px;
+    width: 15vw;
   }
 `;
 
 const Contents = styled.div`
-  /* Font Style */
-  font-size: 0.7em;
+  /* Size */
+  max-width: 40vw;
 
   /* Responsive */
   ${device.desktop} {
-    font-size: 1em;
+    max-width: 14vw;
   }
   ${device.tablet} {
-    font-size: 0.8em;
+    max-width: 15vw;
   }
 `;
 
@@ -119,9 +119,9 @@ const Poster = ({
 }): ReactElement => {
   // Shorten name/title of the movie or show
   if (title) {
-    title = shortenLongText(15, title);
+    title = shortenLongText(13, title);
   } else if (name && !isPerson) {
-    name = shortenLongText(15, name);
+    name = shortenLongText(13, name);
   }
 
   // React Element
