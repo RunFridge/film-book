@@ -1,18 +1,20 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
-import { device } from "../Styles/Responsive";
+import { device, size } from "../Styles/Responsive";
+
+// Hooks
+import useScreenSize from "../Hooks/useScreenSize";
 
 // Keen Slider
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-import { size } from "../Styles/Responsive";
 
 // Components
 import Poster from "./Poster";
+import { NextNav, PrevNav } from "./SliderNav";
 
 // Types
 import { Movie, Person, Show } from "../@types/graphqlTypes";
-import useScreenSize from "../Hooks/useScreenSize";
 import { Theme } from "../@types/style";
 
 /*
@@ -21,9 +23,6 @@ import { Theme } from "../@types/style";
 ==========================
 */
 const SliderWrapper = styled.div`
-  /* Position */
-  position: relative;
-
   /* Size */
   padding: 0 30px;
   &:not(:last-child) {
@@ -39,55 +38,10 @@ const SliderWrapper = styled.div`
   }
 `;
 
-const SliderContainer = styled.div<{ posterCount: number }>`
-  /* Display */
-  display: flex;
-
+const SliderContainer = styled.div`
   /* Size */
   height: 100%;
   margin-top: 15px;
-
-  /* Gradient Slider */
-  &::before {
-    /* Display */
-    display: ${({ posterCount }) => (posterCount <= 2 ? "none" : "block")};
-
-    content: "";
-    /* Position */
-    position: absolute;
-    left: 0;
-    z-index: 5;
-    /* Size */
-    height: 100%;
-    width: 5%;
-
-    background: ${({ theme }: { theme: Theme }) => theme.bgPrimary};
-    background: linear-gradient(
-      90deg,
-      ${({ theme }: { theme: Theme }) => theme.bgPrimary} 10%,
-      transparent 100%
-    );
-  }
-  &::after {
-    /* Display */
-    display: ${({ posterCount }) => (posterCount <= 2 ? "none" : "block")};
-
-    content: "";
-    /* Position */
-    position: absolute;
-    right: 0;
-    z-index: 5;
-    /* Size */
-    height: 100%;
-    width: 5%;
-
-    background: ${({ theme }: { theme: Theme }) => theme.bgPrimary};
-    background: linear-gradient(
-      270deg,
-      ${({ theme }: { theme: Theme }) => theme.bgPrimary} 10%,
-      transparent 100%
-    );
-  }
 `;
 
 const SliderTitle = styled.h3`
@@ -117,6 +71,7 @@ const Slider = ({
   // States
   const [width, _] = useScreenSize();
   const [slidesPerView, setSlidesPerView] = useState(2);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const posterLength = movies
     ? movies.length
     : shows
@@ -124,7 +79,6 @@ const Slider = ({
     : people
     ? people.length
     : 0;
-  const initialSlide = posterLength <= 2 ? 0 : Math.floor(posterLength / 2);
 
   // Responsive slider with screen size
   useEffect((): void => {
@@ -141,30 +95,32 @@ const Slider = ({
   }, [width]);
 
   // Keen Slider REF
-  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     slidesPerView,
-    centered: true,
-    initial: initialSlide,
-    slides: ".slide",
+    slideChanged(s) {
+      setCurrentSlide(s.details().relativeSlide);
+    },
   });
 
   // React Element
   return (
     <SliderWrapper>
       <SliderTitle>{sliderTitle}</SliderTitle>
-      <SliderContainer
-        ref={sliderRef}
-        className="keen-slider"
-        posterCount={
-          movies
-            ? movies.length
-            : shows
-            ? shows.length
-            : people
-            ? people.length
-            : 5
-        }
-      >
+      <SliderContainer ref={sliderRef} className="keen-slider">
+        {slider && posterLength > 2 ? ( // Only render nav buttons when there are more than 2 element
+          <>
+            <PrevNav
+              disabled={slider && currentSlide === 0}
+              prev={slider.prev}
+            />
+            <NextNav
+              disabled={
+                slider && currentSlide === slider.details().size - slidesPerView
+              }
+              next={slider.next}
+            />
+          </>
+        ) : null}
         {movies &&
           movies.map(
             ({

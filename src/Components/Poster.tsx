@@ -120,7 +120,7 @@ const Poster = ({
   // Shorten name/title of the movie or show
   if (title) {
     title = shortenLongText(15, title);
-  } else if (name) {
+  } else if (name && !isPerson) {
     name = shortenLongText(15, name);
   }
 
@@ -128,7 +128,7 @@ const Poster = ({
   return (
     <StyledLink
       to={isPerson ? `/person/${id}` : isMovie ? `/movie/${id}` : `/show/${id}`}
-      className="slide"
+      className="keen-slider__slide"
     >
       <PosterImage
         src={
