@@ -128,6 +128,13 @@ const Poster = ({
     name = shortenLongText(13, name);
   }
 
+  // Shorten department / character of the cast or crew
+  if (character) {
+    character = shortenLongText(15, character);
+  } else if (department) {
+    department = shortenLongText(15, department);
+  }
+
   // React Element
   return (
     <StyledLink
