@@ -12,6 +12,7 @@ import Loading from "../Components/Loading";
 import Error from "../Components/Error";
 import Slider from "../Components/Slider";
 import Thumbnail from "../Components/Thumbnail";
+import Page404 from "./Page404";
 
 // Type
 import { Theme } from "../@types/style";
@@ -251,6 +252,12 @@ const MovieDetail = withRouter(
           movieDetail,
           similarMovies,
         }: { movieDetail: Movie; similarMovies: [Movie] } = data;
+
+        if (!movieDetail) {
+          // 영화 ID 존재하지 않음
+          return <Page404 />;
+        }
+
         const {
           credits: { cast, crew },
           videos: { results: videos },
