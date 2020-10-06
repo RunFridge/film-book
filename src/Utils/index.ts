@@ -25,3 +25,9 @@ export const shortenLongText = (limit: number, originStr: string): string => {
   }
   return originStr;
 };
+
+// Youtube Uri
+export const constructYTThumbnail = (youtubeId: string): string =>
+  `https://img.youtube.com/vi/${youtubeId}/sddefault.jpg`;
+export const constructYTUrl = (youtubeId: string): string =>
+  `https://www.youtube.com/watch?v=${youtubeId}`;
