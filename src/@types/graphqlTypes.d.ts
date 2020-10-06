@@ -30,6 +30,10 @@ export interface Movie {
   videos: { results: Array<Video> };
   genres: Array<Genres>;
   credits: Credits;
+  character?: string;
+  department?: string;
+  job?: string;
+  original_title?: string;
 }
 
 export interface Show {
@@ -120,26 +124,30 @@ export interface Person {
   deathday: string | null;
   cast: Array<Cast> | null;
   crew: Array<Crew> | null;
-  movie_credits: MovieCredits | null;
   character: string | undefined;
   department: string | undefined;
+  movie_credits: PersonCredits | null;
+  tv_credits: PersonCredits | null;
 }
 
-export interface MovieCredits {
+export interface PersonCredits {
   cast: Array<Cast> | null;
   crew: Array<Crew> | null;
 }
 
 export interface Cast {
-  cast_id: number;
-  character: string;
-  title: string;
-  poster_path: string | null;
+  id: number;
+  character?: string;
+  title?: string;
+  name?: string;
+  poster_path?: string;
 }
 
 export interface Crew {
-  credit_id: string;
-  department: string;
-  job: string;
-  poster_path: string | null;
+  id: string;
+  department?: string;
+  job?: string;
+  original_title?: string;
+  original_name?: string;
+  poster_path?: string;
 }
