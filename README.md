@@ -56,10 +56,9 @@
 - Goals for version 2.0
 
   - [x] Use custom webpack environemnt without CRA ([Reference](https://velog.io/@jhj46456/React-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0))
-  - [ ] Fix bugs from previous build
-    - [ ] Page not re-rendering when searched twice
-    - [ ] Page not responsive when mobile/tablet sized screen
-  - [ ] Comment functions
+  - [x] Fix bugs from previous build
+    - [x] Page not re-rendering when searched twice
+    - [x] Page not responsive when mobile/tablet sized screen
 
 ### Development guide
 
@@ -85,6 +84,7 @@
 - [TypeScript](https://www.typescriptlang.org/)
 - [Webpack](https://webpack.js.org/)
 - [Keen Slider](https://keen-slider.io/)
+- [Apollo Client](https://www.apollographql.com/docs/react/)
 
 ### Reference
 
