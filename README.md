@@ -31,8 +31,8 @@
     - [x] Show search results
     - [x] Person search results
   - [x] Movie details `/movie/:id`
-    - [ ] Similar movies
-    - [ ] Cast / Crew
+    - [x] Similar movies
+    - [x] Cast / Crew
   - [x] Show details `/show/:id`
     - [ ] Similar shows
     - [ ] Cast / Crew
