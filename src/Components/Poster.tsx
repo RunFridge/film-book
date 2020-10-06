@@ -122,17 +122,18 @@ const Poster = ({
   department?: string;
 }): ReactElement => {
   // Shorten name/title of the movie or show
+  let shortenTitle: string | undefined;
   if (title) {
-    title = shortenLongText(13, title);
+    shortenTitle = shortenLongText(13, title);
   } else if (name && !isPerson) {
-    name = shortenLongText(13, name);
+    shortenTitle = shortenLongText(13, name);
   }
 
   // Shorten department / character of the cast or crew
   if (character) {
-    character = shortenLongText(15, character);
+    character = shortenLongText(20, character);
   } else if (department) {
-    department = shortenLongText(15, department);
+    department = shortenLongText(20, department);
   }
 
   // Get sub information
@@ -163,7 +164,9 @@ const Poster = ({
         }
       />
       <Contents>
-        <Title>{isMovie ? title : name}</Title>
+        <Title title={isMovie ? title : name}>
+          {isPerson ? name : shortenTitle}
+        </Title>
         {subInfo && <SubInfo>{subInfo}</SubInfo>}
         {isPerson ? null : (
           <Rating>{rating ? `${rating} / 10` : "No rating"}</Rating>

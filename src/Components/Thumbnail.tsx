@@ -55,7 +55,7 @@ const Thumbnail = ({ video }: { video: Video }): ReactElement => {
   return (
     <StyledAnchor href={constructYTUrl(key)} target="_blank">
       <ThumbnailImg src={constructYTThumbnail(key)} />
-      <Title>{shortenedName}</Title>
+      <Title title={name}>{shortenedName}</Title>
     </StyledAnchor>
   );
 };
