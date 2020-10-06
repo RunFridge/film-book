@@ -20,12 +20,14 @@ const SEARCH_QUERY = gql`
       id
       title
       poster_path
+      vote_average
       release_date
     }
     searchShow(term: $term) {
       id
       name
       poster_path
+      vote_average
       first_air_date
     }
     searchPerson(term: $term) {
