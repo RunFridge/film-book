@@ -107,7 +107,7 @@ const Slider = ({
     <SliderWrapper>
       <SliderTitle>{sliderTitle}</SliderTitle>
       <SliderContainer ref={sliderRef} className="keen-slider">
-        {slider && posterLength > 2 ? ( // Only render nav buttons when there are more than 2 element
+        {slider && posterLength > slidesPerView ? ( // Only render nav buttons when there are more slidesPerView
           <>
             <PrevNav
               disabled={slider && currentSlide === 0}
