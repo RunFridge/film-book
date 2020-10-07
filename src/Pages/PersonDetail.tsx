@@ -15,6 +15,7 @@ import { constructImageUri, posterSizes } from "../Utils";
 // Type
 import { Person } from "../@types/graphqlTypes";
 import { Theme } from "../@types/style";
+import PersonSlider from "../Components/PersonSlider";
 
 /*
 ==========================
@@ -196,53 +197,62 @@ const PersonDetail = withRouter(
 
       //   Render contents
       return (
-        <Contents>
-          {/* ====== Poster Cover ====== */}
-          <CoverContainer>
-            <Cover
-              src={
-                personDetail.profile_path
-                  ? constructImageUri(
-                      personDetail.profile_path,
-                      posterSizes.w500
-                    )
-                  : require("../Assets/noPosterSmall.png")
-              }
-            />
-          </CoverContainer>
-          {/* ====== Text Information ====== */}
-          <TextContainer>
-            <Name>{korName ? korName : personDetail.name}</Name>
-            <InfoContainer>
-              <Info>
-                {korName ? <InfoItem>{personDetail.name}</InfoItem> : null}
-                {personDetail.also_known_as.length > 1 ? (
-                  <InfoItem>{personDetail.also_known_as[1]}</InfoItem>
-                ) : null}
-                {personDetail.imdb_id && (
-                  <a
-                    href={`https://www.imdb.com/name/${personDetail.imdb_id}/`}
-                    target="_blank"
-                  >
-                    <img
-                      src={require("../Assets/imdbLogo.svg")}
-                      alt="IMDB Link"
-                      width="40px"
-                    />
-                  </a>
-                )}
-              </Info>
-              <Info>
-                {personDetail.birthday && (
-                  <InfoItem>
-                    {personDetail.birthday} ~ {personDetail.deathday}
-                  </InfoItem>
-                )}
-              </Info>
-            </InfoContainer>
-            <Biography>{personDetail.biography}</Biography>
-          </TextContainer>
-        </Contents>
+        <>
+          <Contents>
+            {/* ====== Poster Cover ====== */}
+            <CoverContainer>
+              <Cover
+                src={
+                  personDetail.profile_path
+                    ? constructImageUri(
+                        personDetail.profile_path,
+                        posterSizes.w500
+                      )
+                    : require("../Assets/noPosterSmall.png")
+                }
+              />
+            </CoverContainer>
+            {/* ====== Text Information ====== */}
+            <TextContainer>
+              <Name>{korName ? korName : personDetail.name}</Name>
+              <InfoContainer>
+                <Info>
+                  {korName ? <InfoItem>{personDetail.name}</InfoItem> : null}
+                  {personDetail.also_known_as.length > 1 ? (
+                    <InfoItem>{personDetail.also_known_as[1]}</InfoItem>
+                  ) : null}
+                  {personDetail.imdb_id && (
+                    <a
+                      href={`https://www.imdb.com/name/${personDetail.imdb_id}/`}
+                      target="_blank"
+                    >
+                      <img
+                        src={require("../Assets/imdbLogo.svg")}
+                        alt="IMDB Link"
+                        width="40px"
+                      />
+                    </a>
+                  )}
+                </Info>
+                <Info>
+                  {personDetail.birthday && (
+                    <InfoItem>
+                      {personDetail.birthday} ~ {personDetail.deathday}
+                    </InfoItem>
+                  )}
+                </Info>
+              </InfoContainer>
+              <Biography>{personDetail.biography}</Biography>
+            </TextContainer>
+          </Contents>
+          {/* Sliders */}
+          {personDetail.movie_credits && (
+            <PersonSlider credits={personDetail.movie_credits} isMovie />
+          )}
+          {personDetail.tv_credits && (
+            <PersonSlider credits={personDetail.tv_credits} />
+          )}
+        </>
       );
     }
   }
