@@ -6,8 +6,7 @@
 
 [![Author](https://img.shields.io/badge/author-RunFridge-green?style=flat)](https://github.com/RunFridge/film-book)
 [![License](https://img.shields.io/github/license/RunFridge/film-book)](https://github.com/RunFridge/film-book/blob/dev/LICENSE)
-
-<!-- [![Netlify Status](https://api.netlify.com/api/v1/badges/39906376-fa5e-490c-9dd1-63604ee4f025/deploy-status)](https://app.netlify.com/sites/film-book/deploys) -->
+[![Netlify Status](https://api.netlify.com/api/v1/badges/39906376-fa5e-490c-9dd1-63604ee4f025/deploy-status)](https://app.netlify.com/sites/film-book/deploys)
 
 ### TODO List
 
