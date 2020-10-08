@@ -24,11 +24,11 @@ const useScreenSize = (): [number, number] => {
 export default useScreenSize;
 
 export const isMobile = (): boolean => {
-  /* R
+  /*
     Retrun true if screen is mobile
   */
   const [width, _] = useScreenSize();
-  if (width <= size.maxPhone) {
+  if (width <= size.maxTablet) {
     return true;
   }
   return false;
