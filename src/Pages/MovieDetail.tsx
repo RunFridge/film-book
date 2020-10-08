@@ -212,6 +212,9 @@ const VideosContainer = styled.div`
   /* Gridbox */
   display: grid;
   grid-template-columns: repeat(5, minmax(70px, 1fr));
+  ${device.phone} {
+    grid-template-columns: repeat(3, minmax(70px, 1fr));
+  }
   grid-gap: 10px;
 `;
 
