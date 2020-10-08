@@ -160,6 +160,31 @@ const InfoContainer = styled.div`
   width: 100%;
 `;
 
+const MobilePosterViewer = styled.div`
+  /* Flexbox */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  ${device.desktop} {
+    display: none;
+  }
+`;
+
+const MobilePosterLink = styled.a`
+  /* Link Style */
+  text-decoration: underline;
+  color: inherit;
+  &:visited {
+    color: inherit;
+  }
+  outline: 0;
+
+  /* Button Style */
+  border: 1px solid transparent;
+  border-radius: 2em;
+`;
+
 const Info = styled.ul`
   /* Flexbox */
   display: flex;
@@ -265,7 +290,6 @@ const MovieDetail = withRouter(
           credits: { cast, crew },
           videos: { results: videos },
         } = movieDetail;
-
         // RENDER
         return (
           <>
@@ -278,7 +302,6 @@ const MovieDetail = withRouter(
                 )}
               />
             )}
-
             {/* ====== Render Contents ====== */}
             <Contents>
               {/* ====== Poster Cover ====== */}
@@ -321,13 +344,51 @@ const MovieDetail = withRouter(
                     ))}
                   </Info>
                 </InfoContainer>
+                {/* Poster download for mobile */}
+                {movieDetail.poster_path && (
+                  <MobilePosterViewer>
+                    <h3>포스터 다운로드:</h3>
+                    <MobilePosterLink
+                      href={constructImageUri(
+                        movieDetail.poster_path,
+                        posterSizes.w500
+                      )}
+                      target="_blank"
+                    >
+                      W500
+                    </MobilePosterLink>
+                    <MobilePosterLink
+                      href={constructImageUri(
+                        movieDetail.poster_path,
+                        posterSizes.w780
+                      )}
+                      target="_blank"
+                    >
+                      W780
+                    </MobilePosterLink>
+                    <MobilePosterLink
+                      href={constructImageUri(
+                        movieDetail.poster_path,
+                        posterSizes.original
+                      )}
+                      target="_blank"
+                    >
+                      Original
+                    </MobilePosterLink>
+                  </MobilePosterViewer>
+                )}
+                {/* Rating */}
                 {movieDetail.vote_average && (
                   <Rating>
                     <i className="fas fa-star" />
                     평점: {movieDetail.vote_average} / 10
                   </Rating>
                 )}
-                <Overview>{movieDetail.overview}</Overview>
+                {/* Movie overview */}
+                {movieDetail.overview && (
+                  <Overview>{movieDetail.overview}</Overview>
+                )}
+                {/* Trailer thumbnails */}
                 {videos && videos.length > 0 && (
                   <>
                     <ContainerTitle>관련 영상</ContainerTitle>
