@@ -39,7 +39,7 @@
     - [ ] Season details `/show/:id/season/:seasonNumber`
     - [ ] Episode details `/show/:id/season/:seasonNumber/episode/:episodeNumber`
   - [x] Person details `/person/:id`
-    - [ ] Cast / Crew
+    - [x] Cast / Crew
   - [x] Settings `/settings`
   - [x] 404 Not found Route
 
