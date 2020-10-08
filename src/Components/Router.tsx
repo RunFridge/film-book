@@ -43,12 +43,47 @@ const MainContainer = styled.div`
   }
 `;
 
+const ButtonContainer = styled.div`
+  /* Flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Position */
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 15;
+
+  /* Size */
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+
+  /* Style */
+  background: ${({ theme }: { theme: Theme }) => theme.bgSecondary};
+  box-shadow: ${({ theme }: { theme: Theme }) => theme.textShadow};
+
+  /* Misc */
+  cursor: pointer;
+`;
+
+const StyledIcon = styled.i`
+  color: ${({ theme }: { theme: Theme }) => theme.disabled};
+  font-size: 2rem;
+  &:hover {
+    color: ${({ theme }: { theme: Theme }) => theme.primary};
+  }
+`;
+
 /*
 ==========================
     React Element
 ==========================
 */
 const Router = (): ReactElement => {
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <MainContainer>
       <Switch>
@@ -74,6 +109,9 @@ const Router = (): ReactElement => {
         <Route path="/settings" component={Settings} />
         <Route component={Page404} />
       </Switch>
+      <ButtonContainer onClick={scrollTop}>
+        <StyledIcon className="fas fa-chevron-up" />
+      </ButtonContainer>
     </MainContainer>
   );
 };
