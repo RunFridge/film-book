@@ -44,10 +44,11 @@ const MainContainer = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-  /* Flexbox */
-  display: flex;
+  /* Display */
+  display: none;
   justify-content: center;
   align-items: center;
+
   /* Position */
   position: fixed;
   bottom: 30px;
@@ -65,6 +66,11 @@ const ButtonContainer = styled.div`
 
   /* Misc */
   cursor: pointer;
+
+  /* Responsive button */
+  ${device.desktop} {
+    display: flex;
+  }
 `;
 
 const StyledIcon = styled.i`
