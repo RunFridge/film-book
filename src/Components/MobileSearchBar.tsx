@@ -5,6 +5,9 @@ import { withRouter } from "react-router-dom";
 // Type
 import { Theme } from "../@types/style";
 
+// Hooks
+import useRecentSearch from "../Hooks/useRecentSearch";
+
 /*
 ==========================
     Styled Components
@@ -58,6 +61,7 @@ const Input = styled.input`
 const MobileSearchBar = withRouter(
   ({ history }): ReactElement => {
     const [term, setTerm] = useState("");
+    const [_, addTerm, __] = useRecentSearch();
 
     // Event callbacks
     const handleSearchInput = (event: any) => {
@@ -66,6 +70,7 @@ const MobileSearchBar = withRouter(
 
     const handleSubmit = (event: any) => {
       event.preventDefault();
+      addTerm(term);
       history.replace({
         pathname: "/results",
         state: {

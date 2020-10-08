@@ -6,6 +6,9 @@ import { device } from "../Styles/Responsive";
 // Type
 import { Theme } from "../@types/style";
 
+// Hooks
+import useRecentSearch from "../Hooks/useRecentSearch";
+
 /*
 ==========================
     Styled Components
@@ -48,7 +51,7 @@ const Input = styled.input`
   /* Placeholder */
   ::placeholder {
     font-size: 0.8em;
-    color: gray;
+    color: ${({ theme }: { theme: Theme }) => theme.disabled};
   }
 `;
 
@@ -60,6 +63,7 @@ const Input = styled.input`
 const SearchBar = withRouter(
   ({ history }): ReactElement => {
     const [term, setTerm] = useState("");
+    const [_, addTerm, __] = useRecentSearch();
 
     // Event callbacks
     const handleSearchInput = (event: any) => {
@@ -68,6 +72,7 @@ const SearchBar = withRouter(
 
     const handleSubmit = (event: any) => {
       event.preventDefault();
+      addTerm(term);
       history.replace({
         pathname: "/results",
         state: {
