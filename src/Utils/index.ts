@@ -1,5 +1,5 @@
 // The Movie Database Image URI generation
-const BASE_URL = "http://image.tmdb.org/t/p/";
+const BASE_URL = "https://image.tmdb.org/t/p/";
 export const posterSizes = {
   w92: "w92",
   w154: "w154",
