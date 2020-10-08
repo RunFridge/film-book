@@ -16,7 +16,7 @@ export const backdropSizes = {
   original: "original",
 };
 export const constructImageUri = (posterPath: string, size: string): string =>
-  BASE_URL + size + `/${posterPath}`;
+  BASE_URL + size + `${posterPath}`;
 
 // Shorten long string
 export const shortenLongText = (limit: number, originStr: string): string => {
