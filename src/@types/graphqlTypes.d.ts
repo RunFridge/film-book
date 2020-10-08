@@ -144,7 +144,7 @@ export interface Cast {
 }
 
 export interface Crew {
-  id: string;
+  id: number;
   department?: string;
   job?: string;
   original_title?: string;

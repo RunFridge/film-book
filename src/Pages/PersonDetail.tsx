@@ -109,9 +109,6 @@ const TextContainer = styled.div`
 `;
 
 const Name = styled.h1`
-  /* Border */
-  border-bottom: 1px solid;
-
   /* Font Style */
   font-size: 2.8em;
   font-weight: 700;
@@ -247,10 +244,16 @@ const PersonDetail = withRouter(
           </Contents>
           {/* Sliders */}
           {personDetail.movie_credits && (
-            <PersonSlider credits={personDetail.movie_credits} isMovie />
+            <PersonSlider cast={personDetail.movie_credits.cast} isMovie />
+          )}
+          {personDetail.movie_credits && (
+            <PersonSlider crew={personDetail.movie_credits.crew} isMovie />
           )}
           {personDetail.tv_credits && (
-            <PersonSlider credits={personDetail.tv_credits} />
+            <PersonSlider cast={personDetail.tv_credits.cast} />
+          )}
+          {personDetail.tv_credits && (
+            <PersonSlider crew={personDetail.tv_credits.crew} />
           )}
         </>
       );
