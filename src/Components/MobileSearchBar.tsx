@@ -1,9 +1,9 @@
 import React, { ReactElement, useState } from "react";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 // Type
 import { Theme } from "../@types/style";
-import { withRouter } from "react-router-dom";
 
 /*
 ==========================
