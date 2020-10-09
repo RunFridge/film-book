@@ -59,14 +59,20 @@
     - [x] Page not re-rendering when searched twice
     - [x] Page not responsive when mobile/tablet sized screen
 
+- Goals After 2.0 Release
+  - [ ] Refactoring
+    - [ ] Split styled-components to separate files
+    - [ ] "Prettify" if-else statements
+
 ### Development guide
 
-1. Install [Yarn](https://yarnpkg.com/getting-started/install) for package / dependency management
-2. Install dependencies using the following command:
+1. Clone [MovieQL](https://github.com/hwhang0917/ql-movie-api/) project and follow the guide
+2. Install [Yarn](https://yarnpkg.com/getting-started/install) for package / dependency management
+3. Install dependencies using the following command:
    ```sh
    yarn
    ```
-3. Run development server using the following command:
+4. Run development server using the following command:
    ```sh
    yarn start
    ```
@@ -84,6 +90,7 @@
 - [Webpack](https://webpack.js.org/)
 - [Keen Slider](https://keen-slider.io/)
 - [Apollo Client](https://www.apollographql.com/docs/react/)
+- [MovieQL](https://github.com/hwhang0917/ql-movie-api/)
 
 ### Reference
 
