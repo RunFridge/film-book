@@ -437,6 +437,7 @@ const ShowDetail = withRouter(
                   </ThumbnailsContainer>
                 </>
               )}
+              {/* Season Detail */}
               {seasons && (
                 <>
                   <ContainerTitle>시즌 정보</ContainerTitle>
