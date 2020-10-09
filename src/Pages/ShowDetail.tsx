@@ -27,6 +27,7 @@ import { Show } from "../@types/graphqlTypes";
 const SHOW_DETAIL_QUERY = gql`
   query getShowDetailById($id: Int!) {
     showDetail(id: $id) {
+      id
       poster_path
       backdrop_path
       first_air_date

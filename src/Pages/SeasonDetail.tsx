@@ -23,6 +23,7 @@ import { constructImageUri, posterSizes } from "../Utils";
 const SEASON_DETAIL_QUERY = gql`
   query getSeasonDetail($id: Int!, $seasonNumber: Int!) {
     showDetail(id: $id) {
+      id
       name
       backdrop_path
     }
