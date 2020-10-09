@@ -137,6 +137,7 @@ const Cover = styled.img`
 const TextContainer = styled.div`
   /* Size */
   padding: 0 30px;
+  width: 100%;
 `;
 
 const Title = styled.h1`
