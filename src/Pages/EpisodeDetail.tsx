@@ -7,6 +7,7 @@ import { useRouteMatch, withRouter, Link } from "react-router-dom";
 // Components
 import Loading from "../Components/Loading";
 import Error from "../Components/Error";
+import Page404 from "./Page404";
 
 // Types
 import { Episode } from "../@types/graphqlTypes";
@@ -270,6 +271,11 @@ const EpisodeDetail = withRouter(
         seasonDetail: { poster_path: string; name: string };
         episodeDetail: Episode;
       } = data;
+
+      if (!episodeDetail || !showTitle || !seasonName) {
+        // season / show ID DNE
+        return <Page404 />;
+      }
 
       return (
         <>

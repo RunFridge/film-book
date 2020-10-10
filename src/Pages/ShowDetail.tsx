@@ -306,7 +306,7 @@ const ShowDetail = withRouter(
       }: { showDetail: Show; similarShows: [Show] } = data;
 
       if (!showDetail) {
-        // 프로그램 ID 존재하지 않음
+        // Show ID DNE
         return <Page404 />;
       }
 

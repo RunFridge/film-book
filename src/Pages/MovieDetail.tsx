@@ -283,7 +283,7 @@ const MovieDetail = withRouter(
         }: { movieDetail: Movie; similarMovies: [Movie] } = data;
 
         if (!movieDetail) {
-          // 영화 ID 존재하지 않음
+          // Movie ID DNE
           return <Page404 />;
         }
 

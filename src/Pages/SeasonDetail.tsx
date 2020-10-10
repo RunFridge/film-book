@@ -7,6 +7,7 @@ import { device } from "../Styles/Responsive";
 // Components
 import Loading from "../Components/Loading";
 import Error from "../Components/Error";
+import Page404 from "./Page404";
 
 // Types
 import { Season, Episode } from "../@types/graphqlTypes";
@@ -251,6 +252,11 @@ const SeasonDetail = withRouter(
         showDetail: { name: string; backdrop_path: string };
         seasonDetail: Season;
       } = data;
+
+      if (!seasonDetail || !showTitle) {
+        // season / show ID DNE
+        return <Page404 />;
+      }
 
       const { episodes } = seasonDetail;
 

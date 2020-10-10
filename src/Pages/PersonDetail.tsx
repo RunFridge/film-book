@@ -183,7 +183,7 @@ const PersonDetail = withRouter(
       const { personDetail }: { personDetail: Person } = data;
 
       if (!personDetail) {
-        // Person ID 존재하지 않음
+        // Person ID DNE
         return <Page404 />;
       }
       //   Get Korean name
