@@ -152,6 +152,20 @@ const Poster = ({
     shortenTitle = shortenLongText(13, title);
   }
 
+  // Shorten character/department/job of the movie or show
+  let shortenCharacter: string | undefined;
+  let shortenDepartment: string | undefined;
+  let shortenJob: string | undefined;
+  if (character) {
+    shortenCharacter = shortenLongText(20, character);
+  }
+  if (department) {
+    shortenDepartment = shortenLongText(20, department);
+  }
+  if (job) {
+    shortenJob = shortenLongText(20, job);
+  }
+
   return (
     <StyledLink
       to={isMovie ? `/movie/${id}` : `/show/${id}`}
@@ -168,12 +182,12 @@ const Poster = ({
         <Title title={title}>{shortenTitle}</Title>
         {isCrew ? (
           <>
-            <SubInfo>{department}</SubInfo>
-            <SubInfo>{job}</SubInfo>
+            <SubInfo title={department}>{shortenDepartment}</SubInfo>
+            <SubInfo title={job}>{shortenJob}</SubInfo>
           </>
         ) : (
           <>
-            <SubInfo>{character}</SubInfo>
+            <SubInfo title={character}>{shortenCharacter}</SubInfo>
           </>
         )}
       </Contents>
