@@ -125,7 +125,7 @@ const Header = withRouter(
     }
     return (
       <NavContainer>
-        <StyledLink to="/">
+        <StyledLink to={pathname.includes("show") ? "/shows" : "/"}>
           <Logo src={require("../Assets/logo.png")} />
         </StyledLink>
         <MenuContainer>
