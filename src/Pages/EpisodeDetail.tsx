@@ -169,6 +169,9 @@ const Contents = styled.div`
 
   /* Size */
   margin: 15px 0;
+
+  /* Size */
+  min-height: calc(100vh - 231px);
 `;
 
 const CoverContainer = styled.div`
