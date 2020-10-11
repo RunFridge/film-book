@@ -15,6 +15,10 @@ import { Season } from "../@types/graphqlTypes";
 ==========================
 */
 const StyledLink = styled(Link)`
+  /* Flexbox */
+  display: flex;
+  justify-content: center;
+
   /* Link style */
   text-decoration: none;
   color: inherit;
@@ -35,7 +39,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Poster = styled.img`
-  max-width: 100%;
+  width: 100%;
   border-radius: 1em;
 `;
 
@@ -65,7 +69,7 @@ const TextContainer = styled.div`
 
 const Title = styled.h3`
   /* Font Style */
-  color: ${({ theme }: { theme: Theme }) => theme.enabled};
+  color: #fff;
   text-shadow: ${({ theme }: { theme: Theme }) => theme.textShadow};
 `;
 const SubInfo = styled.p`

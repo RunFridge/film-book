@@ -415,12 +415,12 @@ const ShowDetail = withRouter(
                 </MobilePosterViewer>
               )}
               {/* Rating */}
-              {showDetail.vote_average && (
+              {showDetail.vote_average !== 0 ? (
                 <Rating>
                   <i className="fas fa-star" />
                   평점: {showDetail.vote_average} / 10
                 </Rating>
-              )}
+              ): <Rating><i className="fas fa-star" />평점: 없음</Rating>}
               {/* Show overview */}
               {showDetail.overview && (
                 <Overview>{showDetail.overview}</Overview>

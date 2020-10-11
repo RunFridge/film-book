@@ -379,12 +379,12 @@ const MovieDetail = withRouter(
                   </MobilePosterViewer>
                 )}
                 {/* Rating */}
-                {movieDetail.vote_average && (
+                {movieDetail.vote_average !==0 ? (
                   <Rating>
                     <i className="fas fa-star" />
                     평점: {movieDetail.vote_average} / 10
                   </Rating>
-                )}
+                ): <Rating><i className="fas fa-star" />평점: 없음</Rating>}
                 {/* Movie overview */}
                 {movieDetail.overview && (
                   <Overview>{movieDetail.overview}</Overview>
