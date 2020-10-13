@@ -10,6 +10,7 @@ import GlobalStyle from "./Styles/GlobalStyle";
 
 // Hooks
 import useThemeSwitcher from "./Hooks/useThemeSwitcher";
+import { Helmet } from "react-helmet";
 
 const App = (): ReactElement => {
   const { themeString } = useThemeSwitcher();
@@ -17,6 +18,13 @@ const App = (): ReactElement => {
   return (
     <>
       <ThemeProvider theme={theme[themeString]}>
+        <Helmet>
+          <link
+            rel="shortcut icon"
+            href={require("./Assets/favicon.png")}
+            type="image/x-icon"
+          />
+        </Helmet>
         <GlobalStyle />
         <Header />
         <Router />

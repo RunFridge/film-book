@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { useQuery, gql } from "@apollo/client";
 import { useRouteMatch, withRouter } from "react-router-dom";
@@ -283,7 +284,7 @@ const MovieDetail = withRouter(
         }: { movieDetail: Movie; similarMovies: [Movie] } = data;
 
         if (!movieDetail) {
-          // 영화 ID 존재하지 않음
+          // Movie ID DNE
           return <Page404 />;
         }
 
@@ -294,6 +295,9 @@ const MovieDetail = withRouter(
         // RENDER
         return (
           <>
+            <Helmet>
+              <title>Film Book 2.0 | {movieDetail.title}</title>
+            </Helmet>
             {/* ====== Render backdrop if exists */}
             {movieDetail.backdrop_path && (
               <Backdrop
@@ -379,10 +383,15 @@ const MovieDetail = withRouter(
                   </MobilePosterViewer>
                 )}
                 {/* Rating */}
-                {movieDetail.vote_average && (
+                {movieDetail.vote_average !== 0 ? (
                   <Rating>
                     <i className="fas fa-star" />
                     평점: {movieDetail.vote_average} / 10
+                  </Rating>
+                ) : (
+                  <Rating>
+                    <i className="fas fa-star" />
+                    평점: 없음
                   </Rating>
                 )}
                 {/* Movie overview */}

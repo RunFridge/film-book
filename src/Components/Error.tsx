@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 // Type
@@ -48,6 +49,9 @@ const ContactLink = styled.a`
 
 const Error = ({ message }: { message: string }): ReactElement => (
   <Container>
+    <Helmet>
+      <title>Film Book 2.0 | Error</title>
+    </Helmet>
     <img
       src={require("../Assets/errorLogo.png")}
       alt="error-logo"

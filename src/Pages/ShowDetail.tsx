@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { gql, useQuery } from "@apollo/client";
 import { Link, useRouteMatch, withRouter } from "react-router-dom";
@@ -306,7 +307,7 @@ const ShowDetail = withRouter(
       }: { showDetail: Show; similarShows: [Show] } = data;
 
       if (!showDetail) {
-        // 프로그램 ID 존재하지 않음
+        // Show ID DNE
         return <Page404 />;
       }
 
@@ -318,6 +319,9 @@ const ShowDetail = withRouter(
 
       return (
         <>
+          <Helmet>
+            <title>Film Book 2.0 | {showDetail.name}</title>
+          </Helmet>
           {/* Backdrop Render */}
           {showDetail.backdrop_path && (
             <Backdrop
@@ -415,10 +419,15 @@ const ShowDetail = withRouter(
                 </MobilePosterViewer>
               )}
               {/* Rating */}
-              {showDetail.vote_average && (
+              {showDetail.vote_average !== 0 ? (
                 <Rating>
                   <i className="fas fa-star" />
                   평점: {showDetail.vote_average} / 10
+                </Rating>
+              ) : (
+                <Rating>
+                  <i className="fas fa-star" />
+                  평점: 없음
                 </Rating>
               )}
               {/* Show overview */}

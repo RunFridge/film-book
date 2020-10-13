@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { useRouteMatch, withRouter, Link } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
@@ -7,6 +8,7 @@ import { device } from "../Styles/Responsive";
 // Components
 import Loading from "../Components/Loading";
 import Error from "../Components/Error";
+import Page404 from "./Page404";
 
 // Types
 import { Season, Episode } from "../@types/graphqlTypes";
@@ -252,10 +254,20 @@ const SeasonDetail = withRouter(
         seasonDetail: Season;
       } = data;
 
+      if (!seasonDetail || !showTitle) {
+        // season / show ID DNE
+        return <Page404 />;
+      }
+
       const { episodes } = seasonDetail;
 
       return (
         <>
+          <Helmet>
+            <title>
+              Film Book 2.0 | {showTitle} - {seasonDetail.name}
+            </title>
+          </Helmet>
           {/* Backdrop Render */}
           {backdrop_path && (
             <Backdrop

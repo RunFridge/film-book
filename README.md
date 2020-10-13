@@ -33,10 +33,10 @@
     - [x] Similar movies
     - [x] Cast / Crew
   - [x] Show details `/show/:id`
-    - [ ] Similar shows
-    - [ ] Cast / Crew
-    - [ ] Season details `/show/:id/season/:seasonNumber`
-    - [ ] Episode details `/show/:id/season/:seasonNumber/episode/:episodeNumber`
+    - [x] Similar shows
+    - [x] Cast / Crew
+    - [x] Season details `/show/:id/season/:seasonNumber`
+    - [x] Episode details `/show/:id/season/:seasonNumber/episode/:episodeNumber`
   - [x] Person details `/person/:id`
     - [x] Cast / Crew
   - [x] Settings `/settings`

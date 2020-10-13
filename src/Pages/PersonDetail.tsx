@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { useQuery, gql } from "@apollo/client";
 import { useRouteMatch, withRouter } from "react-router-dom";
@@ -183,7 +184,7 @@ const PersonDetail = withRouter(
       const { personDetail }: { personDetail: Person } = data;
 
       if (!personDetail) {
-        // Person ID 존재하지 않음
+        // Person ID DNE
         return <Page404 />;
       }
       //   Get Korean name
@@ -196,6 +197,9 @@ const PersonDetail = withRouter(
       return (
         <>
           <Contents>
+            <Helmet>
+              <title>Film Book 2.0 | {personDetail.name}</title>
+            </Helmet>
             {/* ====== Poster Cover ====== */}
             <CoverContainer>
               <Cover

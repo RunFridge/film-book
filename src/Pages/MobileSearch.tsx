@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { Helmet } from "react-helmet";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 
@@ -110,6 +111,9 @@ const MobileSearch = withRouter(
 
     return (
       <>
+        <Helmet>
+          <title>Film Book 2.0 | Search</title>
+        </Helmet>
         <Description>최근 검색 목록</Description>
         <Container>
           {recentSearch.length === 0 && (
