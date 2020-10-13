@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { withRouter, useLocation } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
@@ -71,6 +72,9 @@ const Results = withRouter(
           const { searchMovie, searchShow, searchPerson } = data;
           return (
             <>
+              <Helmet>
+                <title>Film Book 2.0 | Results</title>
+              </Helmet>
               <Slider movies={searchMovie} sliderTitle="영화 검색 결과" />
               {searchMovie.length === 0 ? (
                 <Info>😥 검색 결과가 없습니다.</Info>

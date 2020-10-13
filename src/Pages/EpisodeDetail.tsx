@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { Helmet } from "react-helmet";
 import { gql, useQuery } from "@apollo/client";
 import styled from "styled-components";
 import { device } from "../Styles/Responsive";
@@ -279,6 +280,11 @@ const EpisodeDetail = withRouter(
 
       return (
         <>
+          <Helmet>
+            <title>
+              Film Book 2.0 | {showTitle} - {seasonName}:{episodeDetail.name}
+            </title>
+          </Helmet>
           {/* Backdrop Render */}
           {backdrop_path && (
             <Backdrop

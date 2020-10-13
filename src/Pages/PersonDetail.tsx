@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { useQuery, gql } from "@apollo/client";
 import { useRouteMatch, withRouter } from "react-router-dom";
@@ -196,6 +197,9 @@ const PersonDetail = withRouter(
       return (
         <>
           <Contents>
+            <Helmet>
+              <title>Film Book 2.0 | {personDetail.name}</title>
+            </Helmet>
             {/* ====== Poster Cover ====== */}
             <CoverContainer>
               <Cover

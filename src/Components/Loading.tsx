@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 // Type
 import { Theme } from "../@types/style";
@@ -70,6 +71,9 @@ const Loader = styled.div`
 const Loading = (): ReactElement => {
   return (
     <LoadingWrapper>
+      <Helmet>
+        <title>Film Book 2.0 | Loading</title>
+      </Helmet>
       <Loader>
         <div className="lds-ripple">
           <div></div>

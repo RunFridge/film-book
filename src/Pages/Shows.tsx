@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import styled from "styled-components";
+import { Helmet } from "react-helmet";
 import { useQuery, gql } from "@apollo/client";
 
 // Components
@@ -54,6 +54,9 @@ const Shows = (): ReactElement => {
       const { popularShows, airingTodayShows, topRatedShows } = data;
       return (
         <>
+          <Helmet>
+            <title>Film Book 2.0 | Shows</title>
+          </Helmet>
           <Slider shows={popularShows} sliderTitle="인기 프로그램" />
           <Slider shows={airingTodayShows} sliderTitle="실시간 프로그램" />
           <Slider shows={topRatedShows} sliderTitle="최고 평점 프로그램" />

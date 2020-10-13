@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
-import styled from "styled-components";
 import { useQuery, gql } from "@apollo/client";
+import { Helmet } from "react-helmet";
 
 // Components
 import Loading from "../Components/Loading";
@@ -54,6 +54,9 @@ const Home = (): ReactElement => {
       const { popularMovies, nowPlayingMovies, upcomingMovies } = data;
       return (
         <>
+          <Helmet>
+            <title>Film Book 2.0 | Movie</title>
+          </Helmet>
           <Slider movies={popularMovies} sliderTitle="인기 영화" />
           <Slider movies={nowPlayingMovies} sliderTitle="현재 상영 영화" />
           <Slider movies={upcomingMovies} sliderTitle="개봉 예정 영화" />

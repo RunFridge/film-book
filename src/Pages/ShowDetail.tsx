@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { gql, useQuery } from "@apollo/client";
 import { Link, useRouteMatch, withRouter } from "react-router-dom";
@@ -318,6 +319,9 @@ const ShowDetail = withRouter(
 
       return (
         <>
+          <Helmet>
+            <title>Film Book 2.0 | {showDetail.name}</title>
+          </Helmet>
           {/* Backdrop Render */}
           {showDetail.backdrop_path && (
             <Backdrop
@@ -420,7 +424,12 @@ const ShowDetail = withRouter(
                   <i className="fas fa-star" />
                   평점: {showDetail.vote_average} / 10
                 </Rating>
-              ): <Rating><i className="fas fa-star" />평점: 없음</Rating>}
+              ) : (
+                <Rating>
+                  <i className="fas fa-star" />
+                  평점: 없음
+                </Rating>
+              )}
               {/* Show overview */}
               {showDetail.overview && (
                 <Overview>{showDetail.overview}</Overview>

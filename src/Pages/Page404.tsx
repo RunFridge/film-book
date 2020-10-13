@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -65,6 +66,9 @@ const StyledLink = styled(Link)`
 */
 const Page404 = (): ReactElement => (
   <Container>
+    <Helmet>
+      <title>Film Book 2.0 | Page Not Found</title>
+    </Helmet>
     <img
       src={require("../Assets/pageNotFound.svg")}
       alt="page-not-found-logo"

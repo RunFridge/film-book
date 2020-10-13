@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 // Type
@@ -56,6 +57,9 @@ const Settings = (): ReactElement => {
   const { themeString, changeTheme } = useThemeSwitcher();
   return (
     <Container>
+      <Helmet>
+        <title>Film Book 2.0 | Settings</title>
+      </Helmet>
       <SettingContent>
         <Title>설정</Title>
         <SettingList>
