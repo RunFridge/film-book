@@ -1,18 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { HashRouter as Router } from "react-router-dom";
-import { ApolloProvider } from "@apollo/client";
-import client from "./apollo";
-import App from "./App";
-import AppProvider from "./AppProvider";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
 
 ReactDOM.render(
-  <Router>
-    <ApolloProvider client={client}>
-      <AppProvider>
-        <App />
-      </AppProvider>
-    </ApolloProvider>
-  </Router>,
-  document.getElementById("root")
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root'),
 );
