@@ -63,6 +63,7 @@
   - [ ] Refactoring
     - [ ] Split styled-components to separate files
     - [ ] "Prettify" if-else statements
+  - [ ] Test Git branch protection
 
 ### Development guide
 
